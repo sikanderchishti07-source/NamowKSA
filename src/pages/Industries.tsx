@@ -1,5 +1,6 @@
 import { useI18n } from '../i18n';
 import { Section, SectionTitle, CTASection } from '../components/Shared';
+import { ScrollReveal } from '../components/ScrollReveal';
 import { ChefHat, Coffee, Truck, Building2, Rocket, UtensilsCrossed } from 'lucide-react';
 
 export default function Industries() {
@@ -16,44 +17,60 @@ export default function Industries() {
 
   return (
     <div dir={dir}>
-      <div className="bg-navy py-20 md:py-28">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-3xl md:text-5xl font-bold text-white">{t('types.title')}</h1>
-          <p className="mt-4 text-lg md:text-xl text-white/70 max-w-2xl mx-auto">
-            We work across the full spectrum of food service operations in Saudi Arabia.
-          </p>
+      {/* Hero with background image */}
+      <section className="relative py-24 md:py-32 overflow-hidden">
+        <div className="absolute inset-0">
+          <img
+            src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1920&q=80"
+            alt="Restaurant dining"
+            className="w-full h-full object-cover"
+            loading="eager"
+          />
+          <div className="absolute inset-0 bg-navy/90"></div>
         </div>
-      </div>
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <ScrollReveal animation="up">
+            <h1 className="text-3xl md:text-5xl font-bold text-white">{t('types.title')}</h1>
+            <p className="mt-4 text-lg md:text-xl text-white/70 max-w-2xl mx-auto">
+              We work across the full spectrum of food service operations in Saudi Arabia.
+            </p>
+          </ScrollReveal>
+        </div>
+      </section>
 
       <Section>
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {industries.map((ind, i) => (
-            <div key={i} className="p-6 bg-ivory rounded-xl border border-sage/20 hover:border-teal/40 transition-all">
-              <div className="w-14 h-14 flex items-center justify-center bg-teal/10 text-teal rounded-xl mb-4">
-                {ind.icon}
+            <ScrollReveal key={i} animation="up" delay={(i % 3) + 1}>
+              <div className="p-8 bg-ivory rounded-2xl border border-sage/20 hover:border-teal/40 hover:shadow-xl hover:-translate-y-1 transition-all h-full group">
+                <div className="w-16 h-16 flex items-center justify-center bg-teal/10 text-teal rounded-2xl mb-5 group-hover:bg-teal group-hover:text-white transition-all">
+                  {ind.icon}
+                </div>
+                <h3 className="text-lg font-semibold text-navy mb-3">{ind.title}</h3>
+                <p className="text-sm text-charcoal/70 leading-relaxed">{ind.desc}</p>
               </div>
-              <h3 className="text-lg font-semibold text-navy mb-2">{ind.title}</h3>
-              <p className="text-sm text-charcoal/70 leading-relaxed">{ind.desc}</p>
-            </div>
+            </ScrollReveal>
           ))}
         </div>
       </Section>
 
       <Section className="bg-ivory">
-        <SectionTitle title="Our Approach by Segment" />
+        <ScrollReveal animation="up">
+          <SectionTitle title="Our Approach by Segment" />
+        </ScrollReveal>
         <div className="max-w-3xl mx-auto space-y-6">
-          <div className="p-6 bg-white rounded-xl border border-sage/20">
-            <h4 className="font-semibold text-navy mb-2">Independent Restaurants</h4>
-            <p className="text-sm text-charcoal/70">Hands-on operational support with practical systems that owner-operators can manage day-to-day. Focus on profitability and sustainability.</p>
-          </div>
-          <div className="p-6 bg-white rounded-xl border border-sage/20">
-            <h4 className="font-semibold text-navy mb-2">Restaurant Groups & Franchises</h4>
-            <p className="text-sm text-charcoal/70">Standardized systems and centralized reporting that maintain brand consistency while allowing local adaptation. Multi-unit optimization.</p>
-          </div>
-          <div className="p-6 bg-white rounded-xl border border-sage/20">
-            <h4 className="font-semibold text-navy mb-2">Investors & New Concepts</h4>
-            <p className="text-sm text-charcoal/70">Feasibility analysis, concept development, and launch support that de-risks new restaurant investments in the Saudi market.</p>
-          </div>
+          {[
+            { title: 'Independent Restaurants', desc: 'Hands-on operational support with practical systems that owner-operators can manage day-to-day. Focus on profitability and sustainability.' },
+            { title: 'Restaurant Groups & Franchises', desc: 'Standardized systems and centralized reporting that maintain brand consistency while allowing local adaptation. Multi-unit optimization.' },
+            { title: 'Investors & New Concepts', desc: 'Feasibility analysis, concept development, and launch support that de-risks new restaurant investments in the Saudi market.' },
+          ].map((item, i) => (
+            <ScrollReveal key={i} animation="left" delay={i + 1}>
+              <div className="p-6 bg-white rounded-2xl border border-sage/20 hover:border-teal/30 hover:shadow-lg transition-all">
+                <h4 className="font-semibold text-navy mb-2">{item.title}</h4>
+                <p className="text-sm text-charcoal/70">{item.desc}</p>
+              </div>
+            </ScrollReveal>
+          ))}
         </div>
       </Section>
 

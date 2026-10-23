@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useI18n } from '../i18n';
 import { Section, CTASection } from '../components/Shared';
+import { ScrollReveal } from '../components/ScrollReveal';
 import { Send, Phone, Mail, MapPin, Check } from 'lucide-react';
 
 interface FormData {
@@ -91,16 +92,22 @@ export default function Contact() {
 
   return (
     <div dir={dir}>
-      <div className="bg-navy py-20 md:py-28">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-3xl md:text-5xl font-bold text-white">{t('contact.title')}</h1>
-          <p className="mt-4 text-lg md:text-xl text-white/70 max-w-2xl mx-auto">{t('contact.subtitle')}</p>
+      <section className="relative bg-navy py-20 md:py-28 overflow-hidden">
+        <div className="absolute inset-0 opacity-5">
+          <div className="absolute top-0 right-0 w-96 h-96 bg-teal rounded-full blur-3xl"></div>
+          <div className="absolute bottom-0 left-0 w-72 h-72 bg-sage rounded-full blur-3xl"></div>
         </div>
-      </div>
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <ScrollReveal animation="up">
+            <h1 className="text-3xl md:text-5xl font-bold text-white">{t('contact.title')}</h1>
+            <p className="mt-4 text-lg md:text-xl text-white/70 max-w-2xl mx-auto">{t('contact.subtitle')}</p>
+          </ScrollReveal>
+        </div>
+      </section>
 
       <Section>
         <div className="grid lg:grid-cols-3 gap-12">
-          <div className="lg:col-span-2">
+          <ScrollReveal animation="left" className="lg:col-span-2">
             <form onSubmit={handleSubmit} className="space-y-6" noValidate>
               <div className="grid sm:grid-cols-2 gap-6">
                 <div>
@@ -179,9 +186,9 @@ export default function Contact() {
                 {submitting ? '...' : <><Send size={16} /> {t('contact.submit')}</>}
               </button>
             </form>
-          </div>
+          </ScrollReveal>
 
-          <div className="space-y-6">
+          <ScrollReveal animation="right" className="space-y-6">
             <div className="p-6 bg-ivory rounded-xl border border-sage/20">
               <div className="flex items-center gap-3 mb-3">
                 <div className="w-10 h-10 flex items-center justify-center bg-teal/10 text-teal rounded-lg">
@@ -222,7 +229,7 @@ export default function Contact() {
               <h4 className="font-semibold mb-2">Response Time</h4>
               <p className="text-sm text-white/70">We typically respond to enquiries within 1-2 business days. For urgent matters, please indicate in your message.</p>
             </div>
-          </div>
+          </ScrollReveal>
         </div>
       </Section>
     </div>

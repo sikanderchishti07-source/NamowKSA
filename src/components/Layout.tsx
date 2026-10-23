@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useI18n } from '../i18n';
+import { useScrollProgress } from '../hooks/useScrollAnimation';
 import { Menu, X, Globe, Phone, Mail } from 'lucide-react';
 
 export function Navbar() {
@@ -8,6 +9,7 @@ export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
+  const scrollProgress = useScrollProgress();
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -31,6 +33,9 @@ export function Navbar() {
 
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-navy/95 backdrop-blur-sm shadow-lg' : 'bg-navy'}`}>
+      {/* Scroll progress bar */}
+      <div className="absolute bottom-0 left-0 h-0.5 bg-teal transition-all duration-150" style={{ width: `${scrollProgress}%` }}></div>
+      
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-20">
           <Link to="/" className="flex items-center gap-2">
