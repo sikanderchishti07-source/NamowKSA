@@ -54,6 +54,7 @@ export function OperationsPage() {
       headline={t('svc.ops.headline')}
       description={t('svc.ops.full')}
       icon={<Settings size={32} />}
+      image="https://images.unsplash.com/photo-1577219491135-ce391730fb2c?w=1920&q=80"
       challenges={[
         'Inconsistent processes between shifts and team members',
         'No documented standard operating procedures',
@@ -102,6 +103,7 @@ export function MenuEngineeringPage() {
       headline={t('svc.menu.headline')}
       description={t('svc.menu.full')}
       icon={<ChefHat size={32} />}
+      image="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=1920&q=80"
       challenges={[
         'Menu items that look popular but are unprofitable',
         'No data-driven approach to menu design',
@@ -150,6 +152,7 @@ export function FoodCostingPage() {
       headline={t('svc.cost.headline')}
       description={t('svc.cost.full')}
       icon={<Calculator size={32} />}
+      image="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=1920&q=80"
       challenges={[
         'No accurate knowledge of true dish costs',
         'Rising ingredient costs eroding margins silently',
@@ -193,6 +196,7 @@ export function InventoryPage() {
       headline={t('svc.inventory.headline')}
       description={t('svc.inventory.full')}
       icon={<Package size={32} />}
+      image="https://images.unsplash.com/photo-1604329760661-e71dc83f8f26?w=1920&q=80"
       challenges={[
         'Excessive food waste and spoilage',
         'Over-ordering or stock-outs disrupting operations',
@@ -236,6 +240,7 @@ export function StaffingPage() {
       headline={t('svc.staff.headline')}
       description={t('svc.staff.full')}
       icon={<Users size={32} />}
+      image="https://images.unsplash.com/photo-1552566626-52f8b828add9?w=1920&q=80"
       challenges={[
         'High staff turnover increasing recruitment costs',
         'Inconsistent service quality due to training gaps',
@@ -279,6 +284,7 @@ export function FoodSafetyPage() {
       headline={t('svc.safety.headline')}
       description={t('svc.safety.full')}
       icon={<ShieldCheck size={32} />}
+      image="https://images.unsplash.com/photo-1559339352-11d035aa65de?w=1920&q=80"
       challenges={[
         'Uncertainty about compliance with Saudi food safety regulations',
         'Inconsistent food handling practices',
@@ -322,6 +328,7 @@ export function LaunchPage() {
       headline={t('svc.launch.headline')}
       description={t('svc.launch.full')}
       icon={<Rocket size={32} />}
+      image="https://images.unsplash.com/photo-1552566626-52f8b828add9?w=1920&q=80"
       challenges={[
         'No clear roadmap from concept to opening',
         'Underestimating pre-opening complexity and timeline',

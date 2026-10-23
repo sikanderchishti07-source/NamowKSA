@@ -104,19 +104,26 @@ export default function Home() {
             </ScrollReveal>
 
             <ScrollReveal animation="up" delay={3}>
-              <div className="mt-10 flex flex-col sm:flex-row gap-4">
+              <div className="mt-12 flex flex-col sm:flex-row gap-5">
+                {/* Primary CTA Button - Modern Glassmorphism */}
                 <Link
                   to="/contact"
-                  className="group inline-flex items-center justify-center gap-2 px-8 py-4 bg-teal hover:bg-teal/90 text-white font-medium rounded-lg transition-all shadow-lg shadow-teal/25 hover:shadow-xl hover:shadow-teal/30 hover:-translate-y-0.5"
+                  className="group relative inline-flex items-center justify-center gap-3 px-10 py-5 bg-gradient-to-r from-teal to-teal/90 text-white font-semibold rounded-2xl transition-all duration-300 shadow-2xl shadow-teal/30 hover:shadow-teal/50 hover:-translate-y-1 overflow-hidden"
                 >
-                  {t('hero.cta1')}
-                  <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />
+                  <span className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></span>
+                  <span className="relative">{t('hero.cta1')}</span>
+                  <ArrowRight size={20} className="relative transition-transform group-hover:translate-x-2" />
                 </Link>
+                
+                {/* Secondary CTA Button - Modern Outline */}
                 <Link
                   to="/services"
-                  className="inline-flex items-center justify-center px-8 py-4 border border-white/30 text-white hover:bg-white/10 font-medium rounded-lg transition-all backdrop-blur-sm"
+                  className="group relative inline-flex items-center justify-center gap-3 px-10 py-5 bg-white/5 backdrop-blur-md border-2 border-white/20 text-white font-semibold rounded-2xl transition-all duration-300 hover:bg-white/10 hover:border-white/40 hover:-translate-y-1"
                 >
-                  {t('hero.cta2')}
+                  <span>{t('hero.cta2')}</span>
+                  <div className="w-8 h-8 flex items-center justify-center bg-white/10 rounded-full group-hover:bg-white/20 transition-colors">
+                    <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
+                  </div>
                 </Link>
               </div>
             </ScrollReveal>
@@ -346,22 +353,61 @@ export default function Home() {
         </ScrollReveal>
       </Section>
 
-      {/* Business Types */}
-      <Section className="bg-ivory">
-        <ScrollReveal animation="up">
-          <SectionTitle title={t('types.title')} />
-        </ScrollReveal>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-4xl mx-auto">
-          {businessTypes.map((type, i) => (
-            <ScrollReveal key={i} animation="scale" delay={(i % 3) + 1}>
-              <Link to="/industries" className="flex items-center gap-3 p-5 bg-white rounded-xl border border-sage/20 hover:border-teal/40 hover:shadow-md transition-all group">
-                <div className="w-12 h-12 flex items-center justify-center bg-teal/10 text-teal rounded-xl group-hover:bg-teal/20 transition-colors">
-                  <ChefHat size={20} />
-                </div>
-                <span className="font-medium text-navy group-hover:text-teal transition-colors">{type}</span>
-              </Link>
-            </ScrollReveal>
-          ))}
+      {/* Business Types - Enhanced with Images */}
+      <Section className="bg-ivory relative overflow-hidden">
+        <div className="absolute inset-0 opacity-5">
+          <div className="absolute top-0 left-0 w-96 h-96 bg-teal rounded-full blur-3xl"></div>
+          <div className="absolute bottom-0 right-0 w-72 h-72 bg-sage rounded-full blur-3xl"></div>
+        </div>
+        
+        <div className="relative">
+          <ScrollReveal animation="up">
+            <SectionTitle title={t('types.title')} subtitle="Tailored solutions for every restaurant concept" />
+          </ScrollReveal>
+          
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+            {businessTypes.map((type, i) => {
+              const images = [
+                'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=600&q=80',
+                'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=600&q=80',
+                'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=600&q=80',
+                'https://images.unsplash.com/photo-1466978913421-dad2c6551513?w=600&q=80',
+                'https://images.unsplash.com/photo-1552566626-52f8b828add9?w=600&q=80',
+                'https://images.unsplash.com/photo-1559339352-11d035aa65de?w=600&q=80',
+              ];
+              
+              return (
+                <ScrollReveal key={i} animation="up" delay={(i % 3) + 1}>
+                  <Link to="/industries" className="group relative overflow-hidden rounded-2xl bg-white border border-sage/20 hover:border-teal/40 hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
+                    {/* Image */}
+                    <div className="h-48 overflow-hidden">
+                      <img 
+                        src={images[i]}
+                        alt={type}
+                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                        loading="lazy"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-navy/80 via-navy/20 to-transparent"></div>
+                    </div>
+                    
+                    {/* Content */}
+                    <div className="relative p-6">
+                      <div className="flex items-center gap-3 mb-3">
+                        <div className="w-12 h-12 flex items-center justify-center bg-teal/10 text-teal rounded-xl group-hover:bg-teal group-hover:text-white transition-all">
+                          <ChefHat size={20} />
+                        </div>
+                      </div>
+                      <h3 className="text-lg font-semibold text-navy group-hover:text-teal transition-colors">{type}</h3>
+                      <div className="mt-3 flex items-center gap-1 text-sm text-teal opacity-0 group-hover:opacity-100 transition-opacity">
+                        <span>Learn more</span>
+                        <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
+                      </div>
+                    </div>
+                  </Link>
+                </ScrollReveal>
+              );
+            })}
+          </div>
         </div>
       </Section>
 

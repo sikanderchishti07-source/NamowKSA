@@ -21,12 +21,21 @@ export function DigitalOverview() {
 
   return (
     <div dir={dir}>
-      <div className="bg-navy py-20 md:py-28">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <section className="relative bg-navy py-20 md:py-28 overflow-hidden">
+        <div className="absolute inset-0">
+          <img 
+            src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1920&q=80"
+            alt="Digital solutions"
+            className="w-full h-full object-cover"
+            loading="eager"
+          />
+          <div className="absolute inset-0 bg-navy/85"></div>
+        </div>
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-3xl md:text-5xl font-bold text-white">{t('digital.title')}</h1>
           <p className="mt-4 text-lg md:text-xl text-white/70 max-w-2xl mx-auto">{t('digital.subtitle')}</p>
         </div>
-      </div>
+      </section>
 
       <Section>
         <div className="grid sm:grid-cols-2 gap-6 max-w-4xl mx-auto">
@@ -60,6 +69,7 @@ export function QRMenusPage() {
       headline={t('dig.qr.headline')}
       description={t('dig.qr.full')}
       icon={<QrCode size={32} />}
+      image="https://images.unsplash.com/photo-1559339352-11d035aa65de?w=1920&q=80"
       features={[
         'Contactless menu access via QR code scanning',
         'Mobile-optimized design that works on any device',
@@ -131,6 +141,7 @@ export function WebsitesPage() {
       headline={t('dig.web.headline')}
       description={t('dig.web.full')}
       icon={<Globe size={32} />}
+      image="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1920&q=80"
       features={[
         'Custom design reflecting your restaurant brand',
         'Mobile-first responsive development',
@@ -191,6 +202,7 @@ export function DashboardsPage() {
       headline={t('dig.dash.headline')}
       description={t('dig.dash.full')}
       icon={<BarChart3 size={32} />}
+      image="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1920&q=80"
       features={[
         'Real-time sales and revenue tracking',
         'Food cost monitoring and alerts',
@@ -261,6 +273,7 @@ export function AutomationPage() {
       headline={t('dig.auto.headline')}
       description={t('dig.auto.full')}
       icon={<Zap size={32} />}
+      image="https://images.unsplash.com/photo-1518770660439-4636190af475?w=1920&q=80"
       features={[
         'Automated inventory reorder triggers',
         'Scheduled reporting and distribution',

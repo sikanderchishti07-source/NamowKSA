@@ -101,9 +101,17 @@ export function CTASection() {
   );
 }
 
-export function PageHero({ title, subtitle }: { title: string; subtitle: string }) {
+export function PageHero({ title, subtitle, image }: { title: string; subtitle: string; image?: string }) {
   return (
     <div className="relative bg-navy py-20 md:py-28 overflow-hidden">
+      {/* Background image if provided */}
+      {image && (
+        <div className="absolute inset-0">
+          <img src={image} alt="" className="w-full h-full object-cover" loading="eager" />
+          <div className="absolute inset-0 bg-navy/85"></div>
+        </div>
+      )}
+      
       {/* Decorative background elements */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute top-0 right-0 w-96 h-96 bg-teal rounded-full blur-3xl"></div>
@@ -131,6 +139,7 @@ export function ServicePageTemplate({
   relatedServices,
   faqItems,
   icon,
+  image,
 }: {
   headline: string;
   description: string;
@@ -141,12 +150,13 @@ export function ServicePageTemplate({
   relatedServices: { title: string; to: string }[];
   faqItems?: { q: string; a: string }[];
   icon: ReactNode;
+  image?: string;
 }) {
   const { t } = useI18n();
 
   return (
     <>
-      <PageHero title={headline} subtitle={description} />
+      <PageHero title={headline} subtitle={description} image={image} />
 
       <Section>
         <div className="grid md:grid-cols-2 gap-12">
@@ -254,6 +264,7 @@ export function DigitalPageTemplate({
   demo,
   relatedServices,
   icon,
+  image,
 }: {
   headline: string;
   description: string;
@@ -262,62 +273,75 @@ export function DigitalPageTemplate({
   demo?: ReactNode;
   relatedServices: { title: string; to: string }[];
   icon: ReactNode;
+  image?: string;
 }) {
   const { t } = useI18n();
 
   return (
     <>
-      <PageHero title={headline} subtitle={description} />
+      <PageHero title={headline} subtitle={description} image={image} />
 
       <Section>
         <div className="grid md:grid-cols-2 gap-12">
-          <div>
-            <h3 className="text-xl font-bold text-navy mb-4">Features</h3>
-            <ul className="space-y-3">
-              {features.map((f, i) => (
-                <li key={i} className="flex items-start gap-3">
-                  <Check size={16} className="mt-1 text-teal flex-shrink-0" />
-                  <span className="text-charcoal/80">{f}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div>
-            <h3 className="text-xl font-bold text-navy mb-4">{t('common.benefits')}</h3>
-            <ul className="space-y-3">
-              {benefits.map((b, i) => (
-                <li key={i} className="flex items-start gap-3">
-                  <Check size={16} className="mt-1 text-teal flex-shrink-0" />
-                  <span className="text-charcoal/80">{b}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
+          <ScrollReveal animation="left">
+            <div>
+              <h3 className="text-xl font-bold text-navy mb-4">Features</h3>
+              <ul className="space-y-3">
+                {features.map((f, i) => (
+                  <li key={i} className="flex items-start gap-3 p-3 rounded-lg hover:bg-ivory transition-colors">
+                    <Check size={16} className="mt-0.5 text-teal flex-shrink-0" />
+                    <span className="text-charcoal/80">{f}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </ScrollReveal>
+          <ScrollReveal animation="right">
+            <div>
+              <h3 className="text-xl font-bold text-navy mb-4">{t('common.benefits')}</h3>
+              <ul className="space-y-3">
+                {benefits.map((b, i) => (
+                  <li key={i} className="flex items-start gap-3 p-3 rounded-lg hover:bg-ivory transition-colors">
+                    <Check size={16} className="mt-0.5 text-teal flex-shrink-0" />
+                    <span className="text-charcoal/80">{b}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </ScrollReveal>
         </div>
       </Section>
 
       {demo && (
         <Section className="bg-ivory">
-          <div className="text-center mb-8">
-            <span className="inline-block px-3 py-1 bg-teal/10 text-teal text-xs font-medium rounded-full">
-              {t('common.demonstration')}
-            </span>
-            <p className="mt-2 text-sm text-charcoal/60">{t('common.sampleData')}</p>
-          </div>
-          {demo}
+          <ScrollReveal animation="up">
+            <div className="text-center mb-8">
+              <span className="inline-block px-3 py-1 bg-teal/10 text-teal text-xs font-medium rounded-full">
+                {t('common.demonstration')}
+              </span>
+              <p className="mt-2 text-sm text-charcoal/60">{t('common.sampleData')}</p>
+            </div>
+          </ScrollReveal>
+          <ScrollReveal animation="scale">
+            {demo}
+          </ScrollReveal>
         </Section>
       )}
 
       <Section>
-        <SectionTitle title={t('common.related')} />
+        <ScrollReveal animation="up">
+          <SectionTitle title={t('common.related')} />
+        </ScrollReveal>
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {relatedServices.map((svc, i) => (
-            <Link key={i} to={svc.to} className="group p-5 bg-ivory rounded-lg border border-sage/20 hover:border-teal/40 transition-all">
-              <h4 className="font-medium text-navy group-hover:text-teal transition-colors">{svc.title}</h4>
-              <span className="mt-2 inline-flex items-center gap-1 text-sm text-teal">
-                {t('common.learnMore')} <ArrowRight size={14} />
-              </span>
-            </Link>
+            <ScrollReveal key={i} animation="up" delay={(i % 3) + 1}>
+              <Link to={svc.to} className="group p-5 bg-ivory rounded-xl border border-sage/20 hover:border-teal/40 hover:shadow-lg hover:-translate-y-1 transition-all block h-full">
+                <h4 className="font-medium text-navy group-hover:text-teal transition-colors">{svc.title}</h4>
+                <span className="mt-2 inline-flex items-center gap-1 text-sm text-teal">
+                  {t('common.learnMore')} <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
+                </span>
+              </Link>
+            </ScrollReveal>
           ))}
         </div>
       </Section>

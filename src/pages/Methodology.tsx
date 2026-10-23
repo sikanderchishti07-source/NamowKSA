@@ -7,10 +7,34 @@ export default function Methodology() {
   const { t, dir } = useI18n();
 
   const steps = [
-    { icon: <Search size={28} />, title: t('method.1.title'), desc: t('method.1.desc'), num: '01' },
-    { icon: <Lightbulb size={28} />, title: t('method.2.title'), desc: t('method.2.desc'), num: '02' },
-    { icon: <Wrench size={28} />, title: t('method.3.title'), desc: t('method.3.desc'), num: '03' },
-    { icon: <TrendingUp size={28} />, title: t('method.4.title'), desc: t('method.4.desc'), num: '04' },
+    { 
+      icon: <Search size={28} />, 
+      title: t('method.1.title'), 
+      desc: t('method.1.desc'), 
+      num: '01',
+      image: 'https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=800&q=80'
+    },
+    { 
+      icon: <Lightbulb size={28} />, 
+      title: t('method.2.title'), 
+      desc: t('method.2.desc'), 
+      num: '02',
+      image: 'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=800&q=80'
+    },
+    { 
+      icon: <Wrench size={28} />, 
+      title: t('method.3.title'), 
+      desc: t('method.3.desc'), 
+      num: '03',
+      image: 'https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?w=800&q=80'
+    },
+    { 
+      icon: <TrendingUp size={28} />, 
+      title: t('method.4.title'), 
+      desc: t('method.4.desc'), 
+      num: '04',
+      image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80'
+    },
   ];
 
   return (
@@ -34,22 +58,33 @@ export default function Methodology() {
         </div>
       </section>
 
-      {/* Steps */}
+      {/* Steps with Images */}
       <Section>
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-6xl mx-auto space-y-20">
           {steps.map((step, i) => (
             <ScrollReveal key={i} animation={i % 2 === 0 ? 'left' : 'right'}>
-              <div className="flex gap-6 mb-16 last:mb-0">
-                <div className="flex flex-col items-center">
-                  <div className="w-16 h-16 flex items-center justify-center bg-teal/10 text-teal rounded-2xl group-hover:bg-teal group-hover:text-white transition-all">
-                    {step.icon}
-                  </div>
-                  {i < steps.length - 1 && <div className="w-px flex-1 bg-gradient-to-b from-teal/30 to-transparent mt-4"></div>}
+              <div className={`grid md:grid-cols-2 gap-8 items-center ${i % 2 === 1 ? 'md:direction-rtl' : ''}`}>
+                {/* Image */}
+                <div className={`relative ${i % 2 === 1 ? 'md:order-2' : ''}`}>
+                  <div className="absolute -top-4 -left-4 w-full h-full bg-teal/10 rounded-2xl"></div>
+                  <img 
+                    src={step.image}
+                    alt={step.title}
+                    className="relative rounded-2xl shadow-xl w-full h-64 md:h-80 object-cover"
+                    loading="lazy"
+                  />
                 </div>
-                <div className="pb-8 flex-1">
-                  <span className="text-sm font-bold text-teal">{step.num}</span>
-                  <h3 className="text-xl font-bold text-navy mt-1 mb-3">{step.title}</h3>
-                  <p className="text-charcoal/70 leading-relaxed">{step.desc}</p>
+                
+                {/* Content */}
+                <div className={`${i % 2 === 1 ? 'md:order-1' : ''}`}>
+                  <div className="flex items-center gap-4 mb-4">
+                    <div className="w-16 h-16 flex items-center justify-center bg-teal/10 text-teal rounded-2xl">
+                      {step.icon}
+                    </div>
+                    <span className="text-5xl font-bold text-teal/20">{step.num}</span>
+                  </div>
+                  <h3 className="text-2xl font-bold text-navy mb-3">{step.title}</h3>
+                  <p className="text-charcoal/70 leading-relaxed text-lg">{step.desc}</p>
                 </div>
               </div>
             </ScrollReveal>
