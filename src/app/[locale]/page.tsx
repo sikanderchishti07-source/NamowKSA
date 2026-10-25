@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Fragment } from "react";
+import { ChartPie, ClipboardList, Languages, MapPin, MonitorSmartphone } from "lucide-react";
 import { notFound } from "next/navigation";
 import { publishedCaseStudies, publishedTestimonials } from "@/content/case-studies";
 import { homeFaqs } from "@/content/faqs";
@@ -19,6 +20,8 @@ import { ArticleList, CtaBand, FaqSection, ServiceIndex } from "@/components/sec
 import { DashboardMockup, QrMenuMockup } from "@/components/visuals/Demos";
 import { MethodRail } from "@/components/visuals/MethodRail";
 
+const valueIcons = [ClipboardList, ChartPie, MonitorSmartphone, Languages];
+
 export async function generateMetadata({ params }: PageProps<"/[locale]">): Promise<Metadata> {
   const { locale } = await params;
   if (!isLocale(locale)) return {};
@@ -36,21 +39,50 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
     <>
       <Hero locale={locale} />
 
-      {/* Value proposition */}
-      <section className="py-24 lg:py-32">
-        <Container className="grid gap-12 lg:grid-cols-12">
-          <h2 className="text-[length:var(--text-display-md)] lg:col-span-6">{h.valueTitle}</h2>
-          <div className="lg:col-span-5 lg:col-start-8">
-            <p className="text-lg leading-relaxed text-stone">{h.valueBody}</p>
+      {/* Value proposition: points on one side, kitchen photo on the other */}
+      <section className="overflow-hidden py-24 lg:py-32">
+        <Container className="grid items-center gap-14 lg:grid-cols-12 lg:gap-16">
+          <div className="lg:col-span-6">
+            <p className="inline-flex rounded-full bg-teal/10 px-3.5 py-1 text-sm font-semibold text-teal-dark">{h.valueLabel}</p>
+            <h2 className="mt-5 text-[length:var(--text-display-md)]">{h.valueTitle}</h2>
+            <p className="mt-6 max-w-[36rem] text-lg leading-relaxed text-stone">{h.valueBody}</p>
+            <dl className="mt-10 space-y-7">
+              {h.valuePoints.map((v, i) => {
+                const Icon = valueIcons[i % valueIcons.length];
+                return (
+                  <div key={v.title} className="flex gap-5">
+                    <span aria-hidden="true" className="grid size-12 shrink-0 place-items-center rounded-md bg-teal/10 text-teal-dark">
+                      <Icon className="size-5" strokeWidth={1.75} />
+                    </span>
+                    <div>
+                      <dt className="text-lg font-semibold text-navy">{v.title}</dt>
+                      <dd className="mt-1 text-stone">{v.body}</dd>
+                    </div>
+                  </div>
+                );
+              })}
+            </dl>
           </div>
-          <dl className="grid gap-x-10 gap-y-8 border-t border-line pt-10 sm:grid-cols-3 lg:col-span-12">
-            {h.valuePoints.map((v) => (
-              <div key={v.title}>
-                <dt className="font-[family-name:var(--font-display)] text-[1.45rem] text-navy">{v.title}</dt>
-                <dd className="mt-2 text-stone">{v.body}</dd>
+          <div className="relative lg:col-span-6 lg:ps-6">
+            <div className="relative">
+              <div aria-hidden="true" className="absolute -inset-3 rounded-lg bg-teal/10 sm:-inset-5" />
+              <Photo
+                src={images.chefPass.src}
+                alt={h.valueImageAlt}
+                sizes="(min-width: 1024px) 560px, 100vw"
+                className="relative aspect-[4/5] rounded-md shadow-[0_30px_60px_-30px_rgba(16,43,54,0.45)]"
+              />
+            </div>
+            <div className="relative -mt-10 ms-auto flex w-fit max-w-full items-center gap-4 rounded-md bg-white p-4 shadow-[0_20px_40px_-20px_rgba(16,43,54,0.35)] sm:-me-2 sm:p-5 lg:absolute lg:-bottom-8 lg:-end-8 lg:mt-0">
+              <span aria-hidden="true" className="grid size-12 shrink-0 place-items-center rounded-full bg-teal/10 text-teal-dark">
+                <MapPin className="size-5" strokeWidth={1.75} />
+              </span>
+              <div>
+                <p className="font-semibold text-navy sm:whitespace-nowrap">{h.valueBadgeTitle}</p>
+                <p className="mt-0.5 text-sm text-stone">{h.valueBadgeBody}</p>
               </div>
-            ))}
-          </dl>
+            </div>
+          </div>
         </Container>
       </section>
 

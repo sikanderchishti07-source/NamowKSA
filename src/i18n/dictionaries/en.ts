@@ -85,7 +85,12 @@ const en = {
       { title: "Operational structure", body: "Clear procedures, roles and checklists your team actually uses." },
       { title: "Financial clarity", body: "Recipe costs, margins and waste you can see and act on." },
       { title: "Practical tools", body: "Digital menus, dashboards and automation sized to your operation." },
+      { title: "Bilingual by default", body: "Procedures, menus and training prepared in Arabic, English or both." },
     ],
+    valueLabel: "Why NamowKSA",
+    valueBadgeTitle: "Built for Saudi restaurants",
+    valueBadgeBody: "Consultancy and digital, one team",
+    valueImageAlt: "A chef finishing a plate under brass heat lamps at the kitchen pass",
     pillarsTitle: "Two kinds of help, one aim",
     pillarsBody:
       "Some problems need a consultant on the floor. Others need a better tool. Most need both, so we offer them together.",

@@ -19,6 +19,14 @@ export const images = {
       ar: "صالة طعام راقية بدرجات الكحلي والأزرق المخضر، مُعدّة لخدمة المساء تحت إضاءة نحاسية دافئة",
     },
   },
+  /** Homepage "why us" photo, generated with Higgsfield (GPT Image 2.5). */
+  chefPass: {
+    src: "/images/chef-pass.jpg",
+    alt: {
+      en: "A chef finishing a plate under brass heat lamps at the kitchen pass",
+      ar: "طاهٍ يضع اللمسات الأخيرة على طبق تحت مصابيح التسخين النحاسية عند منصة التقديم",
+    },
+  },
   heroDish: {
     src: u("photo-1414235077428-338989a2e8c0"),
     alt: { en: "A plated dish under warm restaurant lighting", ar: "طبق مُقدَّم بعناية تحت إضاءة مطعم دافئة" },
