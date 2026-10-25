@@ -20,8 +20,8 @@ export function Logo({ className, tone = "dark" }: { className?: string; tone?: 
   return (
     <span className={cn("inline-flex items-center gap-2.5", tone === "dark" ? "text-navy" : "text-ivory", className)} dir="ltr">
       <LogoMark className="size-9" />
-      <span className="font-[family-name:var(--font-display-latin)] text-[1.45rem] leading-none tracking-[-0.02em] [font-variation-settings:'opsz'_72]">
-        Namow<span className="font-semibold text-teal">KSA</span>
+      <span className="font-[family-name:var(--font-display-latin)] text-[1.5rem] font-semibold uppercase leading-none tracking-[0.04em]">
+        Namow<span className="text-teal">KSA</span>
       </span>
     </span>
   );

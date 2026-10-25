@@ -114,7 +114,7 @@ All copy lives in plain TypeScript files. Every string is an `{ en, ar }` pair, 
 ## Design notes
 
 - **Palette:** deep navy `#102B36`, warm ivory `#F7F5EF`, teal `#159A9C`, muted sage `#8AA79A`, charcoal `#26343A`. Accessible working shades were added after measuring contrast: buttons on light backgrounds use teal `#0F7577` with white text (5.5:1); buttons on navy use bright teal with navy text (4.9:1); small sage labels use `#4F6D60` (≥4.6:1). The original teal and sage remain for accents, rules and icons.
-- **Type:** Fraunces (display) + Manrope (text) for English; Noto Naskh Arabic (display) + IBM Plex Sans Arabic (text) for Arabic. All self-hosted from npm, with no request to Google Fonts.
+- **Type:** Oswald (bold condensed display, main titles in capitals) + Manrope (text) for English; Cairo (bold display) + IBM Plex Sans Arabic (text) for Arabic. All self-hosted from npm, with no request to Google Fonts.
 - **Signature element:** the methodology as order tickets clipped to a kitchen pass rail (`components/visuals/MethodRail.tsx`), an accessible tab list whose arrow keys follow reading direction.
 - **Motion:** one hero entrance sequence, a gentle reveal on the digital showcase, and the ticket rail interaction. `prefers-reduced-motion` disables all of it.
 - **RTL:** layouts use logical properties (`ms-`, `pe-`, `start-`), directional icons flip, and charts, phone numbers and emails stay left-to-right where they should.

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { Fragment } from "react";
 import { notFound } from "next/navigation";
 import { publishedCaseStudies, publishedTestimonials } from "@/content/case-studies";
 import { homeFaqs } from "@/content/faqs";
@@ -276,8 +277,14 @@ function Hero({ locale }: { locale: Locale }) {
       />
       <div aria-hidden="true" className="absolute inset-x-0 bottom-0 -z-10 h-32 bg-gradient-to-t from-navy-deep/70 to-transparent" />
       <Container className="flex min-h-[min(calc(100svh-76px),860px)] flex-col justify-end pb-16 pt-40 sm:pt-48 lg:justify-center lg:py-28">
-        <h1 className="hero-rise max-w-[11ch] text-[length:var(--text-display-xl)] font-light leading-[0.98] text-ivory [font-variation-settings:'opsz'_144] [text-shadow:0_2px_24px_rgba(11,31,39,0.45)]">
-          {h.heroTitle}
+        <h1 className="hero-rise max-w-[12ch] text-[length:var(--text-display-xl)] font-semibold leading-[0.95] text-ivory [text-shadow:0_2px_24px_rgba(11,31,39,0.45)]">
+          {/* Keep compound words like "Better-Run" together without relying on a special hyphen glyph */}
+          {h.heroTitle.split(" ").map((word, i) => (
+            <Fragment key={i}>
+              {i > 0 && " "}
+              <span className="whitespace-nowrap">{word}</span>
+            </Fragment>
+          ))}
         </h1>
         <p className="hero-rise mt-8 max-w-[34rem] text-lg leading-relaxed text-ivory/85 [animation-delay:120ms] sm:text-xl">
           {h.heroBody}

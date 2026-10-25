@@ -79,7 +79,7 @@ export function ServiceDetail({ locale, service }: { locale: Locale; service: Se
           <ol className="mt-14 grid gap-x-10 gap-y-12 md:grid-cols-2 lg:grid-cols-4">
             {service.approach.map((step, i) => (
               <li key={step.title.en} className="border-t border-ivory/20 pt-6">
-                <span className="font-[family-name:var(--font-display-latin)] text-4xl text-teal-light tabular-nums [font-variation-settings:'opsz'_144]" aria-hidden="true">
+                <span className="font-[family-name:var(--font-display-latin)] text-4xl text-teal-light font-semibold tabular-nums" aria-hidden="true">
                   {i + 1}
                 </span>
                 <h3 className="mt-4 text-[1.4rem] text-ivory">{step.title[locale]}</h3>

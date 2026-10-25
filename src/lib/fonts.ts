@@ -3,9 +3,9 @@ import localFont from "next/font/local";
 // Fonts are self-hosted from @fontsource packages: no runtime request to Google.
 
 export const display = localFont({
-  src: "../../node_modules/@fontsource-variable/fraunces/files/fraunces-latin-opsz-normal.woff2",
+  src: "../../node_modules/@fontsource-variable/oswald/files/oswald-latin-wght-normal.woff2",
   variable: "--font-display-latin",
-  weight: "100 900",
+  weight: "200 700",
   display: "swap",
 });
 
@@ -17,9 +17,9 @@ export const body = localFont({
 });
 
 export const displayArabic = localFont({
-  src: "../../node_modules/@fontsource-variable/noto-naskh-arabic/files/noto-naskh-arabic-arabic-wght-normal.woff2",
+  src: "../../node_modules/@fontsource-variable/cairo/files/cairo-arabic-wght-normal.woff2",
   variable: "--font-display-arabic",
-  weight: "400 700",
+  weight: "200 1000",
   display: "swap",
   preload: false,
 });

@@ -46,7 +46,7 @@ export default async function MethodologyPage({ params }: PageProps<"/[locale]/m
             {methodology.map((stage, i) => (
               <li key={stage.id} className="grid gap-6 border-b border-line py-12 first:pt-0 lg:grid-cols-12 lg:gap-12">
                 <div className="flex items-baseline gap-5 lg:col-span-4">
-                  <span className="font-[family-name:var(--font-display-latin)] text-5xl font-light text-teal tabular-nums [font-variation-settings:'opsz'_144]" aria-hidden="true">
+                  <span className="font-[family-name:var(--font-display-latin)] text-5xl font-semibold text-teal tabular-nums" aria-hidden="true">
                     {String(i + 1).padStart(2, "0")}
                   </span>
                   <div>

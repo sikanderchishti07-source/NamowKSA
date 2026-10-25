@@ -72,7 +72,7 @@ const en = {
     digitalLabel: "Digital solution",
   },
   home: {
-    heroTitle: "Build a Better‑Run Restaurant.",
+    heroTitle: "Build a Better-Run Restaurant.",
     heroBody:
       "Practical restaurant consultancy and digital solutions that bring structure to operations, clarity to costs, and confidence to your next stage of growth.",
     heroPrimary: "Book a Consultation",
