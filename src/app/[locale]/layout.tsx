@@ -8,6 +8,7 @@ import { fontVariables } from "@/lib/fonts";
 import { organizationJsonLd } from "@/lib/seo";
 import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
+import { Preloader } from "@/components/layout/Preloader";
 import { JsonLd } from "@/components/ui/primitives";
 
 export function generateStaticParams() {
@@ -35,6 +36,7 @@ export default async function LocaleLayout({ children, params }: LayoutProps<"/[
   return (
     <html lang={locale} dir={dirOf(locale)} className={fontVariables}>
       <body className="min-h-dvh">
+        <Preloader />
         <a
           href="#main"
           className="fixed start-4 top-3 z-[60] -translate-y-24 rounded-sm bg-navy px-4 py-3 font-semibold text-ivory transition-transform focus:translate-y-0"

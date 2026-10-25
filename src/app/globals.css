@@ -134,3 +134,74 @@
   from { opacity: 0; transform: translateY(8px); }
   to { opacity: 1; transform: none; }
 }
+
+/* ───────── Brand intro (Preloader.tsx) ───────── */
+.preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: grid;
+  place-items: center;
+  background: radial-gradient(60% 50% at 50% 45%, #13414b 0%, var(--color-navy-deep) 70%);
+  animation: pl-out 0.6s cubic-bezier(0.7, 0, 0.2, 1) 1.15s forwards;
+}
+.preloader-inner { display: flex; flex-direction: column; align-items: center; }
+.preloader-mark {
+  position: relative;
+  display: block;
+  width: clamp(84px, 9vw, 112px);
+  aspect-ratio: 324 / 400;
+  opacity: 0;
+  animation: pl-mark 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.05s forwards;
+  -webkit-mask: url(/brand/logo-mark-teal.png) center / contain no-repeat;
+  mask: url(/brand/logo-mark-teal.png) center / contain no-repeat;
+}
+.preloader-mark img { width: 100%; height: 100%; }
+.preloader-shine {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(105deg, transparent 35%, rgba(255, 255, 255, 0.75) 50%, transparent 65%);
+  background-size: 250% 100%;
+  background-position: 120% 0;
+  animation: pl-shine 0.9s ease-in-out 0.45s forwards;
+}
+.preloader-word {
+  margin-top: 1.1rem;
+  font-family: var(--font-display-latin);
+  font-weight: 600;
+  font-size: 1.6rem;
+  line-height: 1;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--color-ivory);
+  opacity: 0;
+  animation: pl-word 0.7s ease 0.35s forwards;
+}
+.preloader-line {
+  margin-top: 1.1rem;
+  display: block;
+  width: 9rem;
+  height: 2px;
+  overflow: hidden;
+  border-radius: 2px;
+  background: rgba(247, 245, 239, 0.12);
+}
+.preloader-line > span {
+  display: block;
+  height: 100%;
+  background: var(--color-teal-light);
+  transform: scaleX(0);
+  transform-origin: left;
+  animation: pl-line 0.9s cubic-bezier(0.65, 0, 0.35, 1) 0.25s forwards;
+}
+@keyframes pl-mark { from { opacity: 0; transform: translateY(14px) scale(0.94); } to { opacity: 1; transform: none; } }
+@keyframes pl-shine { to { background-position: -120% 0; } }
+@keyframes pl-word { from { opacity: 0; letter-spacing: 0.5em; } to { opacity: 1; letter-spacing: 0.12em; } }
+@keyframes pl-line { to { transform: scaleX(1); } }
+@keyframes pl-out { to { opacity: 0; transform: translateY(-2%); visibility: hidden; } }
+@media (prefers-reduced-motion: reduce) {
+  .preloader { animation: pl-out 0.3s linear 0.6s forwards; }
+  .preloader-mark, .preloader-word { opacity: 1; animation: none; }
+  .preloader-shine { display: none; }
+  .preloader-line > span { animation-duration: 0.5s; animation-delay: 0s; }
+}
