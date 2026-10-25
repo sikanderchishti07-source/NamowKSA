@@ -9,7 +9,7 @@ import { images } from "@/content/images";
 import { publishedArticles } from "@/content/insights";
 import { methodology } from "@/content/methodology";
 import { segments } from "@/content/segments";
-import { allServices, findService, serviceCardImage, servicePath, servicesBy } from "@/content/services";
+import { findService, serviceCardImage, servicePath, servicesBy } from "@/content/services";
 import { dirOf, isLocale, type Locale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/get-dictionary";
 import { pageMetadata } from "@/lib/seo";
@@ -19,7 +19,7 @@ import { Reveal } from "@/components/ui/Reveal";
 import { ArticleList, CtaBand, FaqSection } from "@/components/sections/sections";
 import { DashboardMockup, QrMenuMockup } from "@/components/visuals/Demos";
 import { MethodRail } from "@/components/visuals/MethodRail";
-import { ServicesArc } from "@/components/visuals/ServicesArc";
+import { ServiceExplorer } from "@/components/visuals/ServiceExplorer";
 
 const valueIcons = [ClipboardList, ChartPie, MonitorSmartphone, Languages];
 
@@ -87,31 +87,35 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
         </Container>
       </section>
 
-      {/* Two pillars */}
-      <section className="bg-ivory-deep py-24 lg:py-32">
+      {/* Services index with a live preview panel; each service opens its own page */}
+      <section className="border-y border-line bg-ivory-deep py-24 lg:py-32">
         <Container>
-          <SectionHeading title={h.pillarsTitle} body={h.pillarsBody} />
-          <div className="mt-14 grid gap-px overflow-hidden rounded-sm bg-line md:grid-cols-2">
-            <Pillar
-              href={lp("/services")}
-              title={h.consultancyPillarTitle}
-              body={h.consultancyPillarBody}
-              cta={d.nav.allServices}
-              image={images.kitchenBrigade.src}
-              items={servicesBy("consultancy").map((s) => s.title[locale])}
-            />
-            <Pillar
-              href={lp("/digital-solutions")}
-              title={h.digitalPillarTitle}
-              body={h.digitalPillarBody}
-              cta={d.nav.allDigital}
-              image={images.cafeTable.src}
-              items={servicesBy("digital").map((s) => s.title[locale])}
+          <div className="flex flex-wrap items-end justify-between gap-6">
+            <div className="max-w-[44rem]">
+              <p className="inline-flex rounded-full bg-teal/10 px-3.5 py-1 text-sm font-semibold text-teal-dark">{h.servicesLabel}</p>
+              <h2 className="mt-5 text-[length:var(--text-display-md)]">{h.servicesTitle}</h2>
+              <p className="mt-4 text-lg text-stone">{h.servicesBody}</p>
+            </div>
+            <TextLink href={lp("/services")}>{d.nav.allServices}</TextLink>
+          </div>
+          <div className="mt-14">
+            <ServiceExplorer
+              viewLabel={d.common.viewService}
+              includesLabel={d.service.deliverablesTitle}
+              groups={(["consultancy", "digital"] as const).map((cat) => ({
+                label: cat === "consultancy" ? h.consultancyPillarTitle : h.digitalPillarTitle,
+                items: servicesBy(cat).map((s) => ({
+                  href: lp(servicePath(s)),
+                  title: s.title[locale],
+                  short: s.short[locale],
+                  image: serviceCardImage(s),
+                  includes: s.deliverables.slice(0, 4).map((x) => x[locale]),
+                })),
+              }))}
             />
           </div>
         </Container>
       </section>
-
       {/* Challenges and responses */}
       <section className="py-24 lg:py-32">
         <Container>
@@ -139,33 +143,6 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
             })}
           </ul>
         </Container>
-      </section>
-
-      {/* All services on a curved arc; each card opens its own page */}
-      <section className="overflow-hidden border-t border-line py-24 lg:py-28">
-        <Container>
-          <div className="flex flex-wrap items-end justify-between gap-6">
-            <div className="max-w-[44rem]">
-              <p className="inline-flex rounded-full bg-teal/10 px-3.5 py-1 text-sm font-semibold text-teal-dark">{h.servicesLabel}</p>
-              <h2 className="mt-5 text-[length:var(--text-display-md)]">{h.servicesTitle}</h2>
-              <p className="mt-4 text-lg text-stone">{h.servicesBody}</p>
-            </div>
-            <TextLink href={lp("/services")}>{d.nav.allServices}</TextLink>
-          </div>
-        </Container>
-        <div className="mt-14 px-5 sm:px-8 lg:px-4">
-          <ServicesArc
-            dir={dirOf(locale)}
-            viewLabel={d.common.viewService}
-            items={allServices.map((s) => ({
-              href: lp(servicePath(s)),
-              title: s.title[locale],
-              short: s.short[locale],
-              category: s.category === "consultancy" ? h.servicesCatConsultancy : h.servicesCatDigital,
-              image: serviceCardImage(s),
-            }))}
-          />
-        </div>
       </section>
 
       {/* Digital showcase */}
@@ -344,28 +321,5 @@ function Hero({ locale }: { locale: Locale }) {
         </div>
       </Container>
     </section>
-  );
-}
-
-function Pillar({ href, title, body, cta, image, items }: { href: string; title: string; body: string; cta: string; image: string; items: string[] }) {
-  return (
-    <Link href={href} className="group flex flex-col bg-ivory p-8 transition-colors hover:bg-white sm:p-10">
-      <div className="flex items-start justify-between gap-6">
-        <h3 className="text-[length:var(--text-display-sm)] group-hover:text-teal-dark">{title}</h3>
-        <Photo src={image} alt="" sizes="96px" className="size-20 shrink-0 rounded-full sm:size-24" />
-      </div>
-      <p className="mt-4 max-w-md text-stone">{body}</p>
-      <ul className="mt-8 flex flex-wrap gap-2">
-        {items.map((it) => (
-          <li key={it} className="rounded-full border border-line px-3 py-1 text-sm text-charcoal">
-            {it}
-          </li>
-        ))}
-      </ul>
-      <span className="mt-auto inline-flex items-center gap-2 pt-10 font-semibold text-teal-dark">
-        {cta}
-        <Arrow className="size-4 transition-transform group-hover:translate-x-1 rtl:group-hover:-translate-x-1" />
-      </span>
-    </Link>
   );
 }

@@ -132,9 +132,7 @@ const en = {
     ],
     servicesLabel: "Our services",
     servicesTitle: "Everything your restaurant needs to run well",
-    servicesBody: "Seven consultancy services and four digital solutions. Hover a card to read more, or select it to open the service.",
-    servicesCatConsultancy: "Consultancy",
-    servicesCatDigital: "Digital",
+    servicesBody: "Seven consultancy services and four digital solutions, each with a defined scope and clear deliverables. Select a service to see what it covers.",
     operationsTitle: "Consultancy for operations and profitability",
     operationsBody:
       "Each engagement is scoped to the problem you have. Start with one area or combine several.",
