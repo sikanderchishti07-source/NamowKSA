@@ -149,7 +149,7 @@
 .preloader-mark {
   position: relative;
   display: block;
-  width: clamp(84px, 9vw, 112px);
+  width: clamp(150px, 16vw, 210px);
   aspect-ratio: 324 / 400;
   opacity: 0;
   animation: pl-mark 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.05s forwards;
@@ -166,10 +166,10 @@
   animation: pl-shine 0.9s ease-in-out 0.45s forwards;
 }
 .preloader-word {
-  margin-top: 1.1rem;
+  margin-top: 1.6rem;
   font-family: var(--font-display-latin);
   font-weight: 600;
-  font-size: 1.6rem;
+  font-size: clamp(1.9rem, 3vw, 2.5rem);
   line-height: 1;
   letter-spacing: 0.32em;
   text-transform: uppercase;
@@ -180,7 +180,7 @@
 .preloader-line {
   margin-top: 1.1rem;
   display: block;
-  width: 9rem;
+  width: clamp(11rem, 18vw, 15rem);
   height: 2px;
   overflow: hidden;
   border-radius: 2px;
