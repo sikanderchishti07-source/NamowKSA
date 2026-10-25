@@ -130,6 +130,11 @@ const en = {
         service: "food-safety-compliance",
       },
     ],
+    servicesLabel: "Our services",
+    servicesTitle: "Everything your restaurant needs to run well",
+    servicesBody: "Seven consultancy services and four digital solutions. Hover a card to read more, or select it to open the service.",
+    servicesCatConsultancy: "Consultancy",
+    servicesCatDigital: "Digital",
     operationsTitle: "Consultancy for operations and profitability",
     operationsBody:
       "Each engagement is scoped to the problem you have. Start with one area or combine several.",

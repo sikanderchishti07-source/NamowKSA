@@ -22,3 +22,11 @@ export function findService(slug: string): Service | undefined {
 export function servicePath(service: Pick<Service, "category" | "slug">): string {
   return service.category === "consultancy" ? `/services/${service.slug}` : `/digital-solutions/${service.slug}`;
 }
+
+/**
+ * Card photo for the homepage services arc. Replace the file in
+ * public/images/services/<slug>.jpg (3:4 portrait, ~600×800) to change it.
+ */
+export function serviceCardImage(service: Pick<Service, "slug">): string {
+  return `/images/services/${service.slug}.jpg`;
+}

@@ -9,16 +9,17 @@ import { images } from "@/content/images";
 import { publishedArticles } from "@/content/insights";
 import { methodology } from "@/content/methodology";
 import { segments } from "@/content/segments";
-import { findService, servicePath, servicesBy } from "@/content/services";
+import { allServices, findService, serviceCardImage, servicePath, servicesBy } from "@/content/services";
 import { dirOf, isLocale, type Locale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/get-dictionary";
 import { pageMetadata } from "@/lib/seo";
 import { Photo } from "@/components/ui/Photo";
 import { Arrow, ButtonLink, Container, SectionHeading, TextLink } from "@/components/ui/primitives";
 import { Reveal } from "@/components/ui/Reveal";
-import { ArticleList, CtaBand, FaqSection, ServiceIndex } from "@/components/sections/sections";
+import { ArticleList, CtaBand, FaqSection } from "@/components/sections/sections";
 import { DashboardMockup, QrMenuMockup } from "@/components/visuals/Demos";
 import { MethodRail } from "@/components/visuals/MethodRail";
+import { ServicesArc } from "@/components/visuals/ServicesArc";
 
 const valueIcons = [ClipboardList, ChartPie, MonitorSmartphone, Languages];
 
@@ -140,19 +141,31 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
         </Container>
       </section>
 
-      {/* Operations & profitability services */}
-      <section className="border-t border-line py-24 lg:py-32">
-        <Container className="grid gap-12 lg:grid-cols-12">
-          <div className="lg:col-span-4">
-            <div className="lg:sticky lg:top-28">
-              <SectionHeading title={h.operationsTitle} body={h.operationsBody} />
-              <Photo src={images.garnish.src} alt={images.garnish.alt[locale]} sizes="(min-width: 1024px) 380px, 100vw" className="mt-10 hidden aspect-[4/5] rounded-sm lg:block" />
+      {/* All services on a curved arc; each card opens its own page */}
+      <section className="overflow-hidden border-t border-line py-24 lg:py-28">
+        <Container>
+          <div className="flex flex-wrap items-end justify-between gap-6">
+            <div className="max-w-[44rem]">
+              <p className="inline-flex rounded-full bg-teal/10 px-3.5 py-1 text-sm font-semibold text-teal-dark">{h.servicesLabel}</p>
+              <h2 className="mt-5 text-[length:var(--text-display-md)]">{h.servicesTitle}</h2>
+              <p className="mt-4 text-lg text-stone">{h.servicesBody}</p>
             </div>
-          </div>
-          <div className="lg:col-span-8">
-            <ServiceIndex locale={locale} services={servicesBy("consultancy")} />
+            <TextLink href={lp("/services")}>{d.nav.allServices}</TextLink>
           </div>
         </Container>
+        <div className="mt-14 px-5 sm:px-8 lg:px-4">
+          <ServicesArc
+            dir={dirOf(locale)}
+            viewLabel={d.common.viewService}
+            items={allServices.map((s) => ({
+              href: lp(servicePath(s)),
+              title: s.title[locale],
+              short: s.short[locale],
+              category: s.category === "consultancy" ? h.servicesCatConsultancy : h.servicesCatDigital,
+              image: serviceCardImage(s),
+            }))}
+          />
+        </div>
       </section>
 
       {/* Digital showcase */}
