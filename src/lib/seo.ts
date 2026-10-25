@@ -67,7 +67,7 @@ export function organizationJsonLd(locale: Locale) {
     name: siteConfig.name,
     alternateName: dict.meta.siteName,
     url: absoluteUrl(localizedPath(locale, "")),
-    logo: absoluteUrl("/icon.svg"),
+    logo: absoluteUrl("/icon.png"),
     description: dict.meta.defaultDescription,
     areaServed: { "@type": "Country", name: "Saudi Arabia" },
     knowsLanguage: ["ar", "en"],

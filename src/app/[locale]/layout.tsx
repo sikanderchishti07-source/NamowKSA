@@ -17,7 +17,7 @@ export function generateStaticParams() {
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   applicationName: "NamowKSA",
-  icons: { icon: "/icon.svg" },
+  icons: { icon: "/icon.png", apple: "/apple-icon.png" },
   formatDetection: { telephone: false, address: false, email: false },
 };
 
