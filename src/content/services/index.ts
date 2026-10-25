@@ -24,9 +24,11 @@ export function servicePath(service: Pick<Service, "category" | "slug">): string
 }
 
 /**
- * Card photo for the homepage services arc. Replace the file in
- * public/images/services/<slug>.jpg (3:4 portrait, ~600×800) to change it.
+ * Preview image for the homepage services panel, in public/images/services/.
+ * Consultancy services use a photograph (<slug>.jpg). Digital services use a
+ * picture of their own sample screen (<slug>-screen.jpg, Arabic <slug>-screen-ar.jpg).
  */
-export function serviceCardImage(service: Pick<Service, "slug">): string {
+export function serviceCardImage(service: Pick<Service, "slug" | "category">, locale: "en" | "ar"): string {
+  if (service.category === "digital") return `/images/services/${service.slug}-screen${locale === "ar" ? "-ar" : ""}.jpg`;
   return `/images/services/${service.slug}.jpg`;
 }

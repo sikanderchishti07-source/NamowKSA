@@ -108,7 +108,7 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
                   href: lp(servicePath(s)),
                   title: s.title[locale],
                   short: s.short[locale],
-                  image: serviceCardImage(s),
+                  image: serviceCardImage(s, locale),
                   includes: s.deliverables.slice(0, 4).map((x) => x[locale]),
                 })),
               }))}

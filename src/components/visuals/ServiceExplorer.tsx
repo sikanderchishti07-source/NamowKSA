@@ -103,7 +103,7 @@ export function ServiceExplorer({
                 )}
               />
             ))}
-            <span aria-hidden="true" className="absolute inset-0 bg-[linear-gradient(180deg,rgba(11,31,39,0)_55%,rgba(11,31,39,0.85)_100%)]" />
+            <span aria-hidden="true" className="absolute inset-0 bg-[linear-gradient(180deg,rgba(11,31,39,0)_72%,rgba(11,31,39,0.6)_100%)]" />
             <span className="absolute bottom-5 start-6 rounded-full bg-ivory/15 px-3 py-1 text-xs font-semibold backdrop-blur-sm">
               {current.group}
             </span>
