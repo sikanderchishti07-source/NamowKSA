@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { images } from "@/content/images";
@@ -5,6 +6,7 @@ import { getArticle, publishedArticles } from "@/content/insights";
 import { findService, type Service } from "@/content/services";
 import { getDictionary } from "@/i18n/get-dictionary";
 import { resolveLocale } from "@/lib/route";
+import { PageSkeleton } from "@/components/ui/PageSkeleton";
 import { absoluteUrl, pageMetadata } from "@/lib/seo";
 import { Photo } from "@/components/ui/Photo";
 import { Container, JsonLd, TextLink } from "@/components/ui/primitives";
@@ -30,7 +32,17 @@ export async function generateMetadata({ params }: PageProps<"/[locale]/insights
   });
 }
 
-export default async function ArticlePage({ params }: PageProps<"/[locale]/insights/[slug]">) {
+// Route params are read inside <Suspense> so client navigation between
+// slugs shows the skeleton instantly instead of blocking.
+export default function ArticlePage({ params }: PageProps<"/[locale]/insights/[slug]">) {
+  return (
+    <Suspense fallback={<PageSkeleton />}>
+      <ArticlePageContent params={params} />
+    </Suspense>
+  );
+}
+
+async function ArticlePageContent({ params }: { params: PageProps<"/[locale]/insights/[slug]">["params"] }) {
   const locale = await resolveLocale(params);
   const { slug } = await params;
   const article = getArticle(slug);

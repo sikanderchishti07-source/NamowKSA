@@ -258,34 +258,39 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
 function Hero({ locale }: { locale: Locale }) {
   const d = getDictionary(locale);
   const h = d.home;
+  const img = images.heroBackground;
   return (
-    <section className="on-dark relative overflow-hidden bg-navy text-ivory">
-      <div className="grid lg:min-h-[min(calc(100svh-76px),860px)] lg:grid-cols-12">
-        <div className="relative z-10 flex flex-col justify-center px-5 pb-16 pt-16 sm:px-8 lg:col-span-7 lg:py-24 lg:ps-[max(2.5rem,calc((100vw-1240px)/2+2.5rem))] lg:pe-16">
-          <h1 className="hero-rise max-w-[11ch] text-[length:var(--text-display-xl)] font-light leading-[0.98] text-ivory [font-variation-settings:'opsz'_144] lg:-me-24">
-            {h.heroTitle}
-          </h1>
-          <p className="hero-rise mt-8 max-w-[34rem] text-lg leading-relaxed text-ivory/78 [animation-delay:120ms] sm:text-xl">
-            {h.heroBody}
-          </p>
-          <div className="hero-rise mt-10 flex flex-wrap gap-3 [animation-delay:220ms]">
-            <ButtonLink href={`/${locale}/contact`} variant="accent">{h.heroPrimary}</ButtonLink>
-            <ButtonLink href={`/${locale}/services`} variant="ghostLight">
-              {h.heroSecondary}
-            </ButtonLink>
-          </div>
+    <section className="on-dark relative isolate overflow-hidden bg-navy-deep text-ivory">
+      {/* Full-bleed background, mirrored in Arabic so the dark side stays behind the text */}
+      <Photo
+        src={img.src}
+        alt={img.alt[locale]}
+        sizes="100vw"
+        priority
+        className="hero-image absolute inset-0 -z-10 bg-navy-deep"
+        imgClassName="object-[70%_50%] rtl:-scale-x-100"
+      />
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 -z-10 bg-[linear-gradient(90deg,rgba(11,31,39,0.94)_0%,rgba(11,31,39,0.82)_38%,rgba(11,31,39,0.35)_68%,rgba(11,31,39,0.15)_100%)] rtl:-scale-x-100 max-lg:bg-[linear-gradient(180deg,rgba(11,31,39,0.55)_0%,rgba(11,31,39,0.85)_55%,rgba(11,31,39,0.96)_100%)]"
+      />
+      <div aria-hidden="true" className="absolute inset-x-0 bottom-0 -z-10 h-32 bg-gradient-to-t from-navy-deep/70 to-transparent" />
+      <Container className="flex min-h-[min(calc(100svh-76px),860px)] flex-col justify-end pb-16 pt-40 sm:pt-48 lg:justify-center lg:py-28">
+        <h1 className="hero-rise max-w-[11ch] text-[length:var(--text-display-xl)] font-light leading-[0.98] text-ivory [font-variation-settings:'opsz'_144] [text-shadow:0_2px_24px_rgba(11,31,39,0.45)]">
+          {h.heroTitle}
+        </h1>
+        <p className="hero-rise mt-8 max-w-[34rem] text-lg leading-relaxed text-ivory/85 [animation-delay:120ms] sm:text-xl">
+          {h.heroBody}
+        </p>
+        <div className="hero-rise mt-10 flex flex-wrap gap-3 [animation-delay:220ms]">
+          <ButtonLink href={`/${locale}/contact`} variant="accent">
+            {h.heroPrimary}
+          </ButtonLink>
+          <ButtonLink href={`/${locale}/services`} variant="ghostLight">
+            {h.heroSecondary}
+          </ButtonLink>
         </div>
-        <div className="relative lg:col-span-5">
-          <Photo
-            src={images.heroDish.src}
-            alt={images.heroDish.alt[locale]}
-            sizes="(min-width: 1024px) 42vw, 100vw"
-            priority
-            className="hero-image aspect-[4/3] h-full w-full sm:aspect-[16/9] lg:absolute lg:inset-0 lg:aspect-auto"
-          />
-          <div aria-hidden="true" className="pointer-events-none absolute inset-y-0 start-0 hidden w-32 bg-gradient-to-r from-navy to-transparent lg:block rtl:bg-gradient-to-l" />
-        </div>
-      </div>
+      </Container>
     </section>
   );
 }

@@ -11,6 +11,14 @@ export type ImageAsset = { src: string; alt: L; credit?: string };
 const u = (id: string) => `https://images.unsplash.com/${id}`;
 
 export const images = {
+  /** Homepage hero background, generated with Higgsfield (GPT Image 2.5) for NamowKSA. */
+  heroBackground: {
+    src: "/images/hero-restaurant.jpg",
+    alt: {
+      en: "An upscale restaurant dining room in deep navy and teal, set for evening service under warm brass pendant lights",
+      ar: "صالة طعام راقية بدرجات الكحلي والأزرق المخضر، مُعدّة لخدمة المساء تحت إضاءة نحاسية دافئة",
+    },
+  },
   heroDish: {
     src: u("photo-1414235077428-338989a2e8c0"),
     alt: { en: "A plated dish under warm restaurant lighting", ar: "طبق مُقدَّم بعناية تحت إضاءة مطعم دافئة" },

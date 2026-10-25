@@ -1,8 +1,10 @@
+import { Suspense } from "react";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getService, servicesBy } from "@/content/services";
 import { images } from "@/content/images";
 import { resolveLocale } from "@/lib/route";
+import { PageSkeleton } from "@/components/ui/PageSkeleton";
 import { pageMetadata } from "@/lib/seo";
 import { ServiceDetail } from "@/components/templates/ServiceDetail";
 
@@ -24,7 +26,17 @@ export async function generateMetadata({ params }: PageProps<"/[locale]/services
   });
 }
 
-export default async function ConsultancyServicePage({ params }: PageProps<"/[locale]/services/[slug]">) {
+// Route params are read inside <Suspense> so client navigation between
+// slugs shows the skeleton instantly instead of blocking.
+export default function ConsultancyServicePage({ params }: PageProps<"/[locale]/services/[slug]">) {
+  return (
+    <Suspense fallback={<PageSkeleton />}>
+      <ConsultancyServicePageContent params={params} />
+    </Suspense>
+  );
+}
+
+async function ConsultancyServicePageContent({ params }: { params: PageProps<"/[locale]/services/[slug]">["params"] }) {
   const locale = await resolveLocale(params);
   const { slug } = await params;
   const service = getService("consultancy", slug);

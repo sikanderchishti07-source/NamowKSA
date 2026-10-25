@@ -1,6 +1,6 @@
 "use client";
 
-import { AnimatePresence, MotionConfig, motion } from "motion/react";
+import { MotionConfig, motion } from "motion/react";
 import { useId, useRef, useState, type KeyboardEvent } from "react";
 import { cn } from "@/lib/cn";
 
@@ -47,8 +47,6 @@ export function MethodRail({
     e.preventDefault();
   };
 
-  const stage = stages[active];
-
   return (
     <MotionConfig reducedMotion="user">
       <div className="relative">
@@ -76,7 +74,8 @@ export function MethodRail({
                 role="tab"
                 type="button"
                 aria-selected={selected}
-                aria-controls={`${baseId}-panel`}
+                aria-controls={`${baseId}-panel-${i}`}
+                data-tilt={tilt}
                 tabIndex={selected ? 0 : -1}
                 onClick={() => setActive(i)}
                 className="group relative w-[10.5rem] shrink-0 snap-start pt-1 text-start outline-none lg:w-auto"
@@ -108,27 +107,22 @@ export function MethodRail({
           })}
         </div>
 
-        <div
-          id={`${baseId}-panel`}
-          role="tabpanel"
-          aria-labelledby={`${baseId}-tab-${active}`}
-          tabIndex={0}
-          className="mt-4 min-h-[13rem] border-t border-ivory/15 pt-8"
-        >
-          <AnimatePresence mode="wait" initial={false}>
-            <motion.div
-              key={stage.id}
-              initial={{ opacity: 0, y: 8 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -6 }}
-              transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
-              className="grid gap-8 md:grid-cols-12"
+        <div className="mt-4 min-h-[13rem] border-t border-ivory/15 pt-8">
+          {stages.map((st, i) => (
+            <div
+              key={st.id}
+              id={`${baseId}-panel-${i}`}
+              role="tabpanel"
+              aria-labelledby={`${baseId}-tab-${i}`}
+              tabIndex={0}
+              hidden={i !== active}
+              className="grid animate-[panel-in_0.32s_var(--ease-out-soft)] gap-8 md:grid-cols-12"
             >
-              <p className="font-[family-name:var(--font-display)] text-3xl text-ivory md:col-span-4">{stage.name}</p>
+              <p className="font-[family-name:var(--font-display)] text-3xl text-ivory md:col-span-4">{st.name}</p>
               <div className="md:col-span-5">
                 <p className="text-sm font-semibold text-sage-light">{labels.activities}</p>
                 <ul className="mt-3 space-y-2 text-ivory/85">
-                  {stage.activities.map((a) => (
+                  {st.activities.map((a) => (
                     <li key={a} className="flex gap-3">
                       <span className="mt-[0.7em] h-px w-3 shrink-0 bg-teal-light" aria-hidden="true" />
                       {a}
@@ -139,13 +133,13 @@ export function MethodRail({
               <div className="md:col-span-3">
                 <p className="text-sm font-semibold text-sage-light">{labels.outputs}</p>
                 <ul className="mt-3 space-y-2 text-ivory/85">
-                  {stage.outputs.map((o) => (
+                  {st.outputs.map((o) => (
                     <li key={o}>{o}</li>
                   ))}
                 </ul>
               </div>
-            </motion.div>
-          </AnimatePresence>
+            </div>
+          ))}
         </div>
       </div>
     </MotionConfig>

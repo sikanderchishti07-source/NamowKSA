@@ -137,6 +137,7 @@ export function HeaderClient({ data }: { data: NavData }) {
               <button
                 ref={megaButton}
                 type="button"
+                data-mega-toggle
                 aria-expanded={megaOpen}
                 aria-controls={megaId}
                 onClick={() => setMegaOpen((v) => !v)}
@@ -178,6 +179,7 @@ export function HeaderClient({ data }: { data: NavData }) {
           <button
             ref={mobileButton}
             type="button"
+            data-drawer-open
             aria-expanded={mobileOpen}
             aria-controls={mobileId}
             aria-label={labels.openMenu}
@@ -198,12 +200,10 @@ export function HeaderClient({ data }: { data: NavData }) {
         hidden={!megaOpen}
         className="absolute inset-x-0 top-full hidden border-y border-line bg-ivory shadow-[0_24px_48px_-24px_rgba(16,43,54,0.25)] lg:block"
       >
-        {megaOpen && (
-          <Container className="grid grid-cols-12 gap-10 py-10">
+        <Container className="grid grid-cols-12 gap-10 py-10">
             <MegaColumn title={labels.consultancy} items={data.consultancy} all={{ href: data.servicesHref, label: labels.allServices }} className="col-span-7" twoCol />
             <MegaColumn title={labels.digital} items={data.digital} all={{ href: data.digitalHref, label: labels.allDigital }} className="col-span-5 border-s border-line ps-10" />
           </Container>
-        )}
       </div>
 
     </header>
@@ -218,13 +218,12 @@ export function HeaderClient({ data }: { data: NavData }) {
       hidden={!mobileOpen}
       className="on-dark fixed inset-0 z-50 overflow-y-auto bg-navy text-ivory lg:hidden"
     >
-      {mobileOpen && (
-        <div className="flex min-h-full flex-col">
+      <div className="flex min-h-full flex-col">
           <Container className="flex h-[76px] items-center justify-between">
             <Link href={data.homeHref} onClick={() => setMobileOpen(false)} aria-label={`NamowKSA, ${labels.home}`}>
               <Logo tone="light" />
             </Link>
-            <button type="button" onClick={closeMobile} aria-label={labels.closeMenu} className="-me-2 inline-flex size-12 items-center justify-center">
+            <button type="button" data-drawer-close onClick={closeMobile} aria-label={labels.closeMenu} className="-me-2 inline-flex size-12 items-center justify-center">
               <svg viewBox="0 0 24 24" aria-hidden="true" className="size-6">
                 <path d="m6 6 12 12M18 6 6 18" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
               </svg>
@@ -252,7 +251,6 @@ export function HeaderClient({ data }: { data: NavData }) {
             </div>
           </Container>
         </div>
-      )}
     </div>
     </>
   );

@@ -124,3 +124,8 @@
 }
 .hero-rise { animation: hero-rise 1s var(--ease-out-soft) both; }
 .hero-image img { animation: hero-image 1.6s var(--ease-out-soft) both; }
+
+@keyframes panel-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: none; }
+}
