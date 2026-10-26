@@ -23,12 +23,17 @@ export function servicePath(service: Pick<Service, "category" | "slug">): string
   return service.category === "consultancy" ? `/services/${service.slug}` : `/digital-solutions/${service.slug}`;
 }
 
+/** Services that have their own Higgsfield photograph (public/images/services/<slug>-photo.jpg). */
+const servicePhotos = new Set(["menu-engineering", "staffing-training", "food-safety-compliance", "restaurant-websites", "dashboards-reporting"]);
+
 /**
  * Preview image for the homepage services panel, in public/images/services/.
- * Consultancy services use a photograph (<slug>.jpg). Digital services use a
- * picture of their own sample screen (<slug>-screen.jpg, Arabic <slug>-screen-ar.jpg).
+ * A service listed in servicePhotos uses its own photograph. Otherwise
+ * consultancy services use <slug>.jpg and digital services a picture of their
+ * sample screen (<slug>-screen.jpg, Arabic <slug>-screen-ar.jpg).
  */
 export function serviceCardImage(service: Pick<Service, "slug" | "category">, locale: "en" | "ar"): string {
+  if (servicePhotos.has(service.slug)) return `/images/services/${service.slug}-photo.jpg`;
   if (service.category === "digital") return `/images/services/${service.slug}-screen${locale === "ar" ? "-ar" : ""}.jpg`;
   return `/images/services/${service.slug}.jpg`;
 }
