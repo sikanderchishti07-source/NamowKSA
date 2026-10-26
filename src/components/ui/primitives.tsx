@@ -6,12 +6,14 @@ export function Container({ className, ...props }: ComponentProps<"div">) {
   return <div className={cn("mx-auto w-full max-w-[1240px] px-5 sm:px-8 lg:px-10", className)} {...props} />;
 }
 
-type Variant = "primary" | "accent" | "secondary" | "light" | "ghostLight";
+type Variant = "primary" | "accent" | "gold" | "secondary" | "light" | "ghostLight";
 
 const variants: Record<Variant, string> = {
   primary: "bg-teal-dark text-white hover:bg-teal-deep",
   /** For dark sections: bright teal with navy text (AA). */
   accent: "bg-teal text-navy-deep hover:bg-teal-light",
+  /** Brass call to action for the hero and dark bands. */
+  gold: "bg-[linear-gradient(180deg,var(--color-gold-light),var(--color-gold))] text-navy-deep shadow-[0_10px_30px_-12px_rgba(212,174,100,0.7)] hover:brightness-105",
   secondary: "border border-navy/25 text-navy hover:border-navy hover:bg-navy hover:text-ivory",
   light: "bg-ivory text-navy hover:bg-white",
   ghostLight: "border border-ivory/35 text-ivory hover:border-ivory hover:bg-ivory/10",

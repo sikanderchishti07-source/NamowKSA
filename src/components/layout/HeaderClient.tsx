@@ -173,8 +173,9 @@ export function HeaderClient({ data }: { data: NavData }) {
             ariaLabel={labels.switchLanguageLabel}
             className="hidden text-navy sm:inline-flex"
           />
-          <Link href={data.bookHref} className={cn(buttonBase, "hidden min-h-11 bg-navy px-5 text-ivory hover:bg-teal-dark md:inline-flex")}>
+          <Link href={data.bookHref} className={cn(buttonBase, "hidden min-h-11 border border-gold/60 bg-navy px-5 text-gold-light hover:bg-navy-deep hover:text-gold md:inline-flex")}>
             {labels.book}
+            <span aria-hidden="true" className="rtl:-scale-x-100">→</span>
           </Link>
           <button
             ref={mobileButton}

@@ -13,7 +13,7 @@ const u = (id: string) => `https://images.unsplash.com/${id}`;
 export const images = {
   /** Homepage hero background, generated with Higgsfield (GPT Image 2.5) for NamowKSA. */
   heroBackground: {
-    src: "/images/hero-restaurant.jpg",
+    src: "/images/hero-restaurant-bright.jpg",
     alt: {
       en: "An upscale restaurant dining room in deep navy and teal, set for evening service under warm brass pendant lights",
       ar: "صالة طعام راقية بدرجات الكحلي والأزرق المخضر، مُعدّة لخدمة المساء تحت إضاءة نحاسية دافئة",

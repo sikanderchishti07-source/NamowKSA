@@ -24,12 +24,12 @@ export function OfferBar({ href, label, text, cta, close }: { href: string; labe
   const closed = useSyncExternalStore(subscribe, isClosed, () => false);
   if (closed) return null;
   return (
-    <div className="relative bg-teal-deep text-ivory">
+    <div className="relative border-b border-ivory/10 bg-[linear-gradient(90deg,var(--color-navy-deep),#0e3a40,var(--color-navy-deep))] text-ivory">
       <div className="mx-auto flex max-w-[80rem] items-center justify-center gap-3 px-12 py-2.5 text-center text-sm">
-        <span className="hidden shrink-0 rounded-full bg-ivory px-2 py-0.5 text-[0.7rem] font-bold uppercase tracking-wider text-teal-deep sm:inline-block">{label}</span>
+        <span className="hidden shrink-0 rounded-full bg-gold px-2 py-0.5 text-[0.7rem] font-bold uppercase tracking-wider text-navy-deep sm:inline-block">{label}</span>
         <Link href={href} className="group font-medium">
           <span>{text}</span>
-          <span className="ms-2 inline-flex items-center gap-1 font-semibold underline decoration-ivory/40 underline-offset-4 group-hover:decoration-ivory">
+          <span className="ms-2 inline-flex items-center gap-1 font-semibold text-gold-light underline decoration-gold/50 underline-offset-4 group-hover:decoration-gold">
             {cta}
             <span aria-hidden="true" className="transition-transform group-hover:translate-x-0.5 rtl:-scale-x-100">→</span>
           </span>

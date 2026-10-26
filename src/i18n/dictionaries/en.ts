@@ -78,6 +78,12 @@ const en = {
     heroWords: ["Stronger.", "Profitably.", "Faster.", "Bigger."],
     heroBody:
       "Practical restaurant consultancy and digital solutions that bring structure to operations, clarity to costs, and confidence to your next stage of growth.",
+    heroTrust: [
+      { value: "11", label: "Specialist services" },
+      { value: "AR | EN", label: "Fully bilingual" },
+      { value: "KSA", label: "Market focus" },
+    ],
+    heroStrip: ["Operations", "Menu Engineering", "Food Costing", "Staff Training", "Food Safety", "Digital Solutions"],
     heroPrimary: "Book a Consultation",
     heroSecondary: "Explore Our Services",
     heroImageAlt: "A plated dish under warm restaurant lighting",

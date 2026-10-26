@@ -13,7 +13,10 @@
   --color-sage: #8aa79a;
   --color-sage-light: #c9d6cf;
   --color-sage-dark: #4f6d60; /* sage for small text on light backgrounds (AA) */
-  --color-teal-deep: #0b5e60; /* hover state for teal-dark buttons */
+  --color-teal-deep: #0b5e60;
+  --color-gold: #d4ae64; /* brass accent, from the logo artwork; navy text on it passes AA */
+  --color-gold-light: #ecd59f;
+  --color-gold-deep: #a9843f; /* hover state for teal-dark buttons */
   --color-charcoal: #26343a;
   --color-stone: #5b676c; /* secondary text on ivory, AA */
   --color-line: #d9d4c7;

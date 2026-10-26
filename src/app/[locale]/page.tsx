@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ChartPie, ClipboardList, Gift, Languages, ListChecks, MapPin, MonitorSmartphone, Store } from "lucide-react";
+import { ChartColumn, ChartPie, ChefHat, ClipboardList, Gift, Languages, LayoutGrid, ListChecks, MapPin, MonitorSmartphone, Settings2, ShieldCheck, Store, Users } from "lucide-react";
 import { notFound } from "next/navigation";
 import { publishedCaseStudies, publishedTestimonials } from "@/content/case-studies";
 import { homeFaqs } from "@/content/faqs";
@@ -324,12 +324,23 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
   );
 }
 
+const heroStrip = [
+  { slug: "restaurant-operations", icon: Settings2 },
+  { slug: "menu-engineering", icon: ChefHat },
+  { slug: "food-costing", icon: ChartColumn },
+  { slug: "staffing-training", icon: Users },
+  { slug: "food-safety-compliance", icon: ShieldCheck },
+  { slug: null, icon: MonitorSmartphone },
+] as const;
+const heroTrustIcons = [LayoutGrid, Languages, MapPin];
+const tealText = "bg-[linear-gradient(180deg,#7fe0db_0%,#2fb8b4_100%)] bg-clip-text text-transparent";
+
 function Hero({ locale }: { locale: Locale }) {
   const d = getDictionary(locale);
   const h = d.home;
   const img = images.heroBackground;
   return (
-    <section className="on-dark relative isolate overflow-hidden bg-navy-deep text-ivory">
+    <section className="on-dark relative isolate flex min-h-[calc(100svh-118px)] flex-col overflow-hidden bg-navy-deep text-ivory lg:max-h-[1000px]">
       {/* Full-bleed background, mirrored in Arabic so the dark side stays behind the text */}
       <Photo
         src={img.src}
@@ -341,36 +352,78 @@ function Hero({ locale }: { locale: Locale }) {
       />
       <div
         aria-hidden="true"
-        className="absolute inset-0 -z-10 bg-[linear-gradient(90deg,rgba(11,31,39,0.94)_0%,rgba(11,31,39,0.82)_38%,rgba(11,31,39,0.35)_68%,rgba(11,31,39,0.15)_100%)] rtl:-scale-x-100 max-lg:bg-[linear-gradient(180deg,rgba(11,31,39,0.55)_0%,rgba(11,31,39,0.85)_55%,rgba(11,31,39,0.96)_100%)]"
+        className="absolute inset-0 -z-10 bg-[linear-gradient(90deg,rgba(11,31,39,0.92)_0%,rgba(11,31,39,0.7)_34%,rgba(11,31,39,0.12)_62%,rgba(11,31,39,0)_100%)] rtl:-scale-x-100 max-lg:bg-[linear-gradient(180deg,rgba(11,31,39,0.35)_0%,rgba(11,31,39,0.8)_55%,rgba(11,31,39,0.95)_100%)]"
       />
-      <div aria-hidden="true" className="absolute inset-x-0 bottom-0 -z-10 h-32 bg-gradient-to-t from-navy-deep/70 to-transparent" />
-      <Container className="flex min-h-[min(calc(100svh-76px),860px)] flex-col justify-end pb-16 pt-40 sm:pt-48 lg:justify-center lg:py-28">
-        <p className="hero-rise inline-flex w-fit items-center gap-2.5 rounded-full border border-ivory/20 bg-ivory/5 px-4 py-1.5 text-sm font-semibold text-ivory/85 backdrop-blur-sm">
-          <span aria-hidden="true" className="size-1.5 rounded-full bg-teal-light" />
+      <div aria-hidden="true" className="absolute inset-x-0 bottom-0 -z-10 h-40 bg-gradient-to-t from-navy-deep/80 to-transparent" />
+      <Container className="flex flex-1 flex-col justify-end pb-12 pt-28 sm:pt-36 lg:justify-center lg:py-16">
+        <p className="hero-rise flex items-center gap-4 text-xs font-semibold uppercase tracking-[0.22em] text-teal-light [:lang(ar)_&]:text-sm [:lang(ar)_&]:tracking-normal">
+          <span aria-hidden="true" className="h-px w-10 bg-gold" />
           {h.heroEyebrow}
         </p>
-        <h1 className="hero-rise mt-7 text-[length:var(--text-display-xl)] font-semibold leading-[0.95] text-ivory [animation-delay:60ms] [text-shadow:0_2px_24px_rgba(11,31,39,0.45)]">
-          <span className="block">{h.heroTitle[0]}</span>
-          <span className="block text-teal-light">
+        <h1 className="hero-rise mt-6 text-[length:var(--text-display-xl)] font-semibold leading-[0.95] text-ivory [animation-delay:60ms]">
+          <span className="block [text-shadow:0_2px_24px_rgba(11,31,39,0.45)]">{h.heroTitle[0]}</span>
+          <span className="block">
             <span className="sr-only">
               {h.heroTitle[1]} {h.heroWords[0]}
             </span>
-            <span aria-hidden="true">{h.heroTitle[1]} </span>
-            <RotatingWord words={h.heroWords} />
+            <span aria-hidden="true" className="inline-grid overflow-hidden pb-[0.08em] align-bottom">
+              <span className={tealText}>{h.heroTitle[1]}&nbsp;</span>
+            </span>
+            <RotatingWord words={h.heroWords} wordClassName={tealText} />
           </span>
         </h1>
-        <p className="hero-rise mt-8 max-w-[34rem] text-lg leading-relaxed text-ivory/85 [animation-delay:120ms] sm:text-xl">
+        <p className="hero-rise mt-7 max-w-[34rem] text-lg leading-relaxed text-ivory/90 [animation-delay:120ms] sm:text-xl">
           {h.heroBody}
         </p>
-        <div className="hero-rise mt-10 flex flex-wrap gap-3 [animation-delay:220ms]">
-          <ButtonLink href={`/${locale}/contact`} variant="accent">
+        <div className="hero-rise mt-9 flex flex-wrap gap-3 [animation-delay:220ms]">
+          <ButtonLink href={`/${locale}/contact`} variant="gold">
             {h.heroPrimary}
+            <span aria-hidden="true" className="rtl:-scale-x-100">→</span>
           </ButtonLink>
-          <ButtonLink href={`/${locale}/services`} variant="ghostLight">
+          <ButtonLink href={`/${locale}/services`} variant="ghostLight" className="backdrop-blur-sm">
             {h.heroSecondary}
           </ButtonLink>
         </div>
+        <ul className="hero-rise mt-12 flex flex-wrap gap-x-8 gap-y-5 [animation-delay:300ms]">
+          {h.heroTrust.map((item, i) => {
+            const Icon = heroTrustIcons[i];
+            return (
+              <li key={item.label} className="flex items-center gap-3 sm:border-e sm:border-ivory/20 sm:pe-8 sm:last:border-0">
+                <Icon aria-hidden="true" className="size-7 text-gold" strokeWidth={1.5} />
+                <span>
+                  <span className="block text-lg font-semibold leading-tight text-gold-light" dir="ltr">
+                    {item.value}
+                  </span>
+                  <span className="block text-sm text-ivory/75">{item.label}</span>
+                </span>
+              </li>
+            );
+          })}
+        </ul>
       </Container>
+
+      {/* Service strip along the bottom of the hero */}
+      <nav aria-label={d.nav.services} className="border-t border-gold/25 bg-navy-deep/90 backdrop-blur-md">
+        <Container>
+          <ul className="grid grid-cols-3 lg:grid-cols-6">
+            {heroStrip.map((s, i) => {
+              const svc = s.slug ? findService(s.slug) : undefined;
+              const href = svc ? `/${locale}${servicePath(svc)}` : `/${locale}/digital-solutions`;
+              const Icon = s.icon;
+              return (
+                <li key={i} className="border-ivory/10 max-lg:[&:nth-child(-n+3)]:border-b lg:border-e lg:last:border-e-0 lg:first:border-s">
+                  <Link href={href} className="group flex h-full flex-col items-center gap-3 px-2 py-6 text-center transition-colors hover:bg-ivory/5">
+                    <Icon aria-hidden="true" className="size-7 text-gold transition-transform duration-300 group-hover:-translate-y-0.5" strokeWidth={1.5} />
+                    <span className="text-[0.7rem] font-semibold uppercase leading-snug tracking-[0.14em] text-ivory/90 group-hover:text-gold-light [:lang(ar)_&]:text-sm [:lang(ar)_&]:tracking-normal">
+                      {h.heroStrip[i]}
+                    </span>
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+        </Container>
+      </nav>
     </section>
   );
 }
