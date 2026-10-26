@@ -6,6 +6,9 @@
 /** Value used in the service dropdown for a general enquiry. */
 export const GENERAL_SERVICE = "general";
 
+/** Value used in the service dropdown for the free business analysis visit offer. */
+export const FREE_VISIT = "free-visit";
+
 export const businessTypes = ["new", "restaurant", "cafe", "multi", "cloud", "other"] as const;
 export const contactMethods = ["email", "phone", "whatsapp"] as const;
 

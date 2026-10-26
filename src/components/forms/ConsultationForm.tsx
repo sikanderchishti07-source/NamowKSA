@@ -9,6 +9,7 @@ import { buttonBase } from "@/components/ui/primitives";
 import {
   businessTypes,
   contactMethods,
+  FREE_VISIT,
   GENERAL_SERVICE,
   LIMITS,
   normalise,
@@ -62,14 +63,15 @@ export function ConsultationForm({
   const [state, setValues] = useState(empty);
   const [dirty, setDirty] = useState<{ service?: boolean; requirements?: boolean }>({});
 
-  // Prefill from ?service=slug or ?package=id links on service and package pages.
+  // Prefill from ?service=slug (or ?service=free-visit from the offer banner) or ?package=id links.
   const search = useSyncExternalStore(
     noopSubscribe,
     () => window.location.search,
     () => "",
   );
   const query = new URLSearchParams(search);
-  const presetService = serviceOptions.some((o) => o.value === query.get("service")) ? (query.get("service") as string) : "";
+  const q = query.get("service");
+  const presetService = q && (q === FREE_VISIT || serviceOptions.some((o) => o.value === q)) ? q : "";
   const presetPackage = packageOptions.find((o) => o.value === query.get("package"))?.label;
   const values = {
     ...state,
@@ -82,7 +84,7 @@ export function ConsultationForm({
   const summaryRef = useRef<HTMLDivElement>(null);
   const successRef = useRef<HTMLHeadingElement>(null);
   const formRef = useRef<HTMLFormElement>(null);
-  const allowed = [...serviceOptions.map((o) => o.value), GENERAL_SERVICE];
+  const allowed = [...serviceOptions.map((o) => o.value), GENERAL_SERVICE, FREE_VISIT];
 
   useEffect(() => {
     if (status === "success") successRef.current?.focus();
@@ -282,6 +284,7 @@ export function ConsultationForm({
             {...aria(id("service"), !!errors.service)}
           >
             <option value="">{t.select}</option>
+            <option value={FREE_VISIT}>{t.freeVisit}</option>
             {groups.map((g) => (
               <optgroup key={g} label={g}>
                 {serviceOptions

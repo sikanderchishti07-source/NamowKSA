@@ -3,7 +3,7 @@ import { allServices, findService } from "@/content/services";
 import { isLocale } from "@/i18n/config";
 import { deliverEnquiry } from "@/lib/server/delivery";
 import { rateLimit } from "@/lib/server/rate-limit";
-import { GENERAL_SERVICE, normalise, validateEnquiry } from "@/lib/validation";
+import { FREE_VISIT, GENERAL_SERVICE, normalise, validateEnquiry } from "@/lib/validation";
 
 export async function POST(request: NextRequest) {
   const contentType = request.headers.get("content-type") ?? "";
@@ -31,7 +31,7 @@ export async function POST(request: NextRequest) {
   if (!rateLimit(ip)) return NextResponse.json({ error: "rate_limited" }, { status: 429 });
 
   const locale = typeof body.locale === "string" && isLocale(body.locale) ? body.locale : "en";
-  const allowed = [...allServices.map((s) => s.slug), GENERAL_SERVICE];
+  const allowed = [...allServices.map((s) => s.slug), GENERAL_SERVICE, FREE_VISIT];
   const result = validateEnquiry(normalise(body), allowed);
   if (!result.ok) return NextResponse.json({ error: "validation", fields: result.errors }, { status: 422 });
 
@@ -39,7 +39,11 @@ export async function POST(request: NextRequest) {
   const delivery = await deliverEnquiry({
     ...result.data,
     locale,
-    serviceLabel: service ? `${service.title.en} / ${service.title.ar}` : "General enquiry",
+    serviceLabel: service
+      ? `${service.title.en} / ${service.title.ar}`
+      : result.data.service === FREE_VISIT
+        ? "Free business analysis visit / زيارة مجانية لتحليل الأعمال"
+        : "General enquiry",
     submittedAt: new Date().toISOString(),
   });
 

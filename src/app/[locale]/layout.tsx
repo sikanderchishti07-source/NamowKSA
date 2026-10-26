@@ -9,6 +9,7 @@ import { organizationJsonLd } from "@/lib/seo";
 import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
 import { Preloader } from "@/components/layout/Preloader";
+import { OfferBar } from "@/components/layout/OfferBar";
 import { JsonLd } from "@/components/ui/primitives";
 
 export function generateStaticParams() {
@@ -43,6 +44,7 @@ export default async function LocaleLayout({ children, params }: LayoutProps<"/[
         >
           {d.nav.skip}
         </a>
+        <OfferBar href={`/${locale}/contact?service=free-visit`} label={d.offer.barNew} text={d.offer.barText} cta={d.offer.barCta} close={d.offer.close} />
         <Header locale={locale} />
         <main id="main" tabIndex={-1} className="outline-none">
           {children}

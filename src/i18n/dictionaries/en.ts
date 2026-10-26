@@ -156,6 +156,20 @@ const en = {
     ctaBody:
       "Tell us where you are and what's on your mind. We'll suggest a sensible first step, whether that's a focused audit, a single service, or simply a conversation.",
   },
+  offer: {
+    barNew: "New",
+    barText: "Free on-site business analysis visit for your restaurant",
+    barCta: "Book your visit",
+    close: "Close announcement",
+    label: "Free offer",
+    title: "Free Restaurant Business Analysis Visit",
+    body: "We visit your restaurant, review how it runs and show you where it can improve, at no cost.",
+    points: ["We visit your restaurant", "We review operations, costs and menu", "You get clear priorities to act on"],
+    cta: "Book your free visit",
+    whatsapp: "Talk on WhatsApp",
+    note: "No obligation",
+    imageAlt: "A restaurant manager's desk with business dashboards on a laptop and tablet",
+  },
   about: {
     title: "A consultancy built around how restaurants actually run",
     intro:
@@ -312,6 +326,7 @@ const en = {
       whatsapp: "WhatsApp",
     },
     otherService: "Not sure yet / general enquiry",
+    freeVisit: "Free business analysis visit",
     errors: {
       required: "This field is required.",
       email: "Enter a valid email address, e.g. name@company.com.",

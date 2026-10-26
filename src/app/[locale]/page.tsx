@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ChartPie, ClipboardList, Languages, MapPin, MonitorSmartphone } from "lucide-react";
+import { ChartPie, ClipboardList, Gift, Languages, ListChecks, MapPin, MonitorSmartphone, Store } from "lucide-react";
 import { notFound } from "next/navigation";
 import { publishedCaseStudies, publishedTestimonials } from "@/content/case-studies";
 import { homeFaqs } from "@/content/faqs";
@@ -12,6 +12,7 @@ import { findService, serviceCardImage, servicePath, servicesBy } from "@/conten
 import { dirOf, isLocale, type Locale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/get-dictionary";
 import { pageMetadata } from "@/lib/seo";
+import { whatsappLink } from "@/config/site";
 import { Photo } from "@/components/ui/Photo";
 import { Arrow, ButtonLink, Container, SectionHeading, TextLink } from "@/components/ui/primitives";
 import { Reveal } from "@/components/ui/Reveal";
@@ -21,6 +22,7 @@ import { MethodRail } from "@/components/visuals/MethodRail";
 import { ServiceExplorer } from "@/components/visuals/ServiceExplorer";
 
 const valueIcons = [ClipboardList, ChartPie, MonitorSmartphone, Languages];
+const offerIcons = [Store, ChartPie, ListChecks];
 
 export async function generateMetadata({ params }: PageProps<"/[locale]">): Promise<Metadata> {
   const { locale } = await params;
@@ -34,6 +36,7 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
   const d = getDictionary(locale);
   const h = d.home;
   const lp = (p: string) => `/${locale}${p}`;
+  const wa = whatsappLink(d.offer.title);
 
   return (
     <>
@@ -115,6 +118,49 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
           </div>
         </Container>
       </section>
+      {/* Free business analysis visit */}
+      <section className="py-20 lg:py-24">
+        <Container>
+          <div className="on-dark relative isolate grid overflow-hidden rounded-md bg-navy text-ivory shadow-[0_40px_80px_-40px_rgba(11,31,39,0.6)] lg:grid-cols-12">
+            <div aria-hidden="true" className="absolute -start-24 -top-24 -z-10 size-80 rounded-full bg-teal/25 blur-3xl" />
+            <div className="p-8 sm:p-12 lg:col-span-7 lg:p-14">
+              <p className="inline-flex items-center gap-2 rounded-full bg-teal-light/15 px-3.5 py-1 text-sm font-semibold text-teal-light">
+                <Gift aria-hidden="true" className="size-4" strokeWidth={2} />
+                {d.offer.label}
+              </p>
+              <h2 className="mt-5 text-[length:var(--text-display-md)] text-ivory">{d.offer.title}</h2>
+              <p className="mt-4 max-w-[34rem] text-lg leading-relaxed text-ivory/80">{d.offer.body}</p>
+              <ol className="mt-8 grid gap-4 sm:grid-cols-3">
+                {d.offer.points.map((pt, i) => {
+                  const Icon = offerIcons[i];
+                  return (
+                    <li key={pt} className="rounded-sm border border-ivory/12 bg-ivory/[0.04] p-4">
+                      <Icon aria-hidden="true" className="size-5 text-teal-light" strokeWidth={1.75} />
+                      <p className="mt-3 text-[0.95rem] font-semibold leading-snug text-ivory">{pt}</p>
+                    </li>
+                  );
+                })}
+              </ol>
+              <div className="mt-9 flex flex-wrap items-center gap-3">
+                <ButtonLink href={lp("/contact?service=free-visit")} variant="accent">
+                  {d.offer.cta}
+                </ButtonLink>
+                {wa && (
+                  <ButtonLink href={wa} external variant="ghostLight">
+                    {d.offer.whatsapp}
+                  </ButtonLink>
+                )}
+                <span className="text-sm text-ivory/60">{d.offer.note}</span>
+              </div>
+            </div>
+            <div className="relative min-h-64 lg:col-span-5">
+              <Photo src="/images/services/dashboards-reporting-photo.jpg" alt={d.offer.imageAlt} sizes="(min-width: 1024px) 480px, 100vw" className="absolute inset-0" />
+              <div aria-hidden="true" className="absolute inset-0 bg-[linear-gradient(90deg,var(--color-navy)_0%,rgba(16,43,54,0)_35%)] rtl:-scale-x-100 max-lg:bg-[linear-gradient(180deg,var(--color-navy)_0%,rgba(16,43,54,0)_40%)]" />
+            </div>
+          </div>
+        </Container>
+      </section>
+
       {/* Challenges and responses */}
       <section className="py-24 lg:py-32">
         <Container>
