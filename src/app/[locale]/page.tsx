@@ -19,6 +19,7 @@ import { Reveal } from "@/components/ui/Reveal";
 import { ArticleList, CtaBand, FaqSection } from "@/components/sections/sections";
 import { DashboardMockup, QrMenuMockup } from "@/components/visuals/Demos";
 import { MethodRail } from "@/components/visuals/MethodRail";
+import { RotatingWord } from "@/components/visuals/RotatingWord";
 import { ServiceExplorer } from "@/components/visuals/ServiceExplorer";
 
 const valueIcons = [ClipboardList, ChartPie, MonitorSmartphone, Languages];
@@ -350,7 +351,13 @@ function Hero({ locale }: { locale: Locale }) {
         </p>
         <h1 className="hero-rise mt-7 text-[length:var(--text-display-xl)] font-semibold leading-[0.95] text-ivory [animation-delay:60ms] [text-shadow:0_2px_24px_rgba(11,31,39,0.45)]">
           <span className="block">{h.heroTitle[0]}</span>
-          <span className="block text-teal-light">{h.heroTitle[1]}</span>
+          <span className="block text-teal-light">
+            <span className="sr-only">
+              {h.heroTitle[1]} {h.heroWords[0]}
+            </span>
+            <span aria-hidden="true">{h.heroTitle[1]} </span>
+            <RotatingWord words={h.heroWords} />
+          </span>
         </h1>
         <p className="hero-rise mt-8 max-w-[34rem] text-lg leading-relaxed text-ivory/85 [animation-delay:120ms] sm:text-xl">
           {h.heroBody}

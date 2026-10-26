@@ -73,7 +73,9 @@ const en = {
   },
   home: {
     heroEyebrow: "Restaurant consultancy & digital solutions",
-    heroTitle: ["Run Smarter.", "Grow Stronger."],
+    heroTitle: ["Run Smarter.", "Grow"],
+    /** The last word of the slogan rotates through these; the first is the one read by screen readers. */
+    heroWords: ["Stronger.", "Profitably.", "Faster.", "Bigger."],
     heroBody:
       "Practical restaurant consultancy and digital solutions that bring structure to operations, clarity to costs, and confidence to your next stage of growth.",
     heroPrimary: "Book a Consultation",
