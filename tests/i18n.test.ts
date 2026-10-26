@@ -45,7 +45,10 @@ describe("UI dictionaries", () => {
   });
 
   it("no Arabic UI string is empty or left in English", () => {
-    const allowedLatin = new Set([".nav.switchLanguage"]); // the "English" link label
+    const allowedLatin = new Set([
+      ".nav.switchLanguage", // the "English" link label
+      ".home.heroTrust[0].value", // a number
+    ]);
     for (const [path, value] of strings(ar)) {
       expect(value.trim(), path).not.toBe("");
       if (!allowedLatin.has(path) && !path.endsWith(".service")) expect(ARABIC.test(value), `${path} should contain Arabic`).toBe(true);
