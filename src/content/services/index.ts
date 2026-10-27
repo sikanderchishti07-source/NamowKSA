@@ -24,7 +24,18 @@ export function servicePath(service: Pick<Service, "category" | "slug">): string
 }
 
 /** Services that have their own Higgsfield photograph (public/images/services/<slug>-photo.jpg). */
-const servicePhotos = new Set(["menu-engineering", "staffing-training", "food-safety-compliance", "restaurant-websites", "dashboards-reporting"]);
+const servicePhotos = new Set([
+  "restaurant-operations",
+  "menu-engineering",
+  "food-costing",
+  "inventory-waste-control",
+  "staffing-training",
+  "food-safety-compliance",
+  "qr-digital-menus",
+  "restaurant-websites",
+  "dashboards-reporting",
+  "workflow-automation",
+]);
 
 /**
  * Preview image for the homepage services panel, in public/images/services/.
