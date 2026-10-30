@@ -28,7 +28,7 @@ export function pageMetadata({ locale, path, title, description, image, type = "
   const url = absoluteUrl(localizedPath(locale, path));
   const languages: Record<string, string> = {};
   for (const l of locales) languages[localeTags[l]] = absoluteUrl(localizedPath(l, path));
-  languages["x-default"] = absoluteUrl(localizedPath("en", path));
+  languages["x-default"] = absoluteUrl(localizedPath("ar", path));
 
   const ogImage = image ?? absoluteUrl("/og.png");
 

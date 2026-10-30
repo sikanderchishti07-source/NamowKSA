@@ -11,18 +11,9 @@ const knownSlugs: Record<string, Set<string>> = {
 };
 
 function preferredLocale(request: NextRequest): Locale {
+  // A visitor who switched language keeps their choice; everyone else starts in Arabic.
   const cookie = request.cookies.get(LOCALE_COOKIE)?.value;
   if (cookie && isLocale(cookie)) return cookie;
-
-  const header = request.headers.get("accept-language") ?? "";
-  const ranked = header
-    .split(",")
-    .map((part) => {
-      const [tag, q] = part.trim().split(";q=");
-      return { lang: tag.toLowerCase().split("-")[0], q: q ? Number(q) : 1 };
-    })
-    .sort((a, b) => b.q - a.q);
-  for (const { lang } of ranked) if (isLocale(lang)) return lang;
   return defaultLocale;
 }
 
