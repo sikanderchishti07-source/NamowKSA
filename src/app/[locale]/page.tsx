@@ -333,7 +333,8 @@ const heroStrip = [
   { slug: null, icon: MonitorSmartphone },
 ] as const;
 const heroTrustIcons = [LayoutGrid, Languages, MapPin];
-const tealText = "bg-[linear-gradient(180deg,#7fe0db_0%,#2fb8b4_100%)] bg-clip-text text-transparent";
+// Solid colour: Chrome can fail to paint gradient (background-clip) text while it is being transformed.
+const tealText = "text-[#4fc9c4]";
 
 function Hero({ locale }: { locale: Locale }) {
   const d = getDictionary(locale);

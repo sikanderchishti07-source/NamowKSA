@@ -37,10 +37,10 @@ export function RotatingWord({
             key={w}
             className={cn(
               wordClassName,
-              "col-start-1 row-start-1 whitespace-nowrap transition-[transform,opacity,filter] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]",
-              state === "in" && "translate-y-0 opacity-100 blur-0",
-              state === "out" && "-translate-y-[105%] opacity-0 blur-[2px]",
-              state === "wait" && "translate-y-[105%] opacity-0 blur-[2px] duration-0",
+              "col-start-1 row-start-1 whitespace-nowrap transition-[transform,opacity] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]",
+              state === "in" && "translate-y-0 opacity-100",
+              state === "out" && "-translate-y-[105%] opacity-0",
+              state === "wait" && "translate-y-[105%] opacity-0 duration-0",
             )}
           >
             {w}
