@@ -31,6 +31,7 @@ const servicePhotos = new Set([
   "inventory-waste-control",
   "staffing-training",
   "food-safety-compliance",
+  "launch-expansion",
   "qr-digital-menus",
   "restaurant-websites",
   "dashboards-reporting",
