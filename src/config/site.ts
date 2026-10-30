@@ -22,8 +22,8 @@ export const siteConfig = {
     email: clean(process.env.NEXT_PUBLIC_CONTACT_EMAIL),
     /** Display format, e.g. "+966 5X XXX XXXX". */
     phone: clean(process.env.NEXT_PUBLIC_CONTACT_PHONE),
-    /** International format digits only, e.g. 9665XXXXXXXX. */
-    whatsapp: digitsOnly(process.env.NEXT_PUBLIC_WHATSAPP_NUMBER),
+    /** International format digits only, e.g. 9665XXXXXXXX. The business WhatsApp number is the default. */
+    whatsapp: digitsOnly(process.env.NEXT_PUBLIC_WHATSAPP_NUMBER) ?? "966503361798",
     /** External scheduling link (Calendly, Cal.com, Microsoft Bookings…). */
     bookingUrl: clean(process.env.NEXT_PUBLIC_BOOKING_URL),
     /** Optional office location text shown in the footer and contact page. */

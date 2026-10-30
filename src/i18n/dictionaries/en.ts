@@ -318,6 +318,9 @@ const en = {
     consent: "I agree that NamowKSA may use these details to respond to my enquiry, as described in the privacy policy.",
     privacyLink: "privacy policy",
     submit: "Send enquiry",
+    submitWhatsapp: "Send via WhatsApp",
+    whatsappNote: "Your enquiry will open in WhatsApp, ready to send to our team.",
+    whatsappHeading: "New enquiry from the NamowKSA website",
     sending: "Sending…",
     required: "Required",
     businessTypes: {
@@ -353,6 +356,10 @@ const en = {
       rateLimited: "Too many attempts from this connection. Please wait a few minutes and try again.",
       network: "We couldn't reach the server. Check your connection and try again.",
       sendAnother: "Send another enquiry",
+      whatsappTitle: "One last step: press Send in WhatsApp",
+      whatsappBody: "WhatsApp has opened with your enquiry already written. Press Send there to deliver it to our team. Nothing reaches us until you do.",
+      whatsappAgain: "Open WhatsApp again",
+      whatsappEdit: "Edit my enquiry",
     },
   },
   notFound: {

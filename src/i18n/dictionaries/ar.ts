@@ -315,6 +315,9 @@ const ar: Dictionary = {
     consent: "أوافق على أن تستخدم NamowKSA هذه البيانات للرد على استفساري وفق سياسة الخصوصية.",
     privacyLink: "سياسة الخصوصية",
     submit: "إرسال الطلب",
+    submitWhatsapp: "أرسل عبر واتساب",
+    whatsappNote: "سيُفتح طلبك في واتساب جاهزًا للإرسال إلى فريقنا.",
+    whatsappHeading: "طلب جديد من موقع NamowKSA",
     sending: "جارٍ الإرسال…",
     required: "مطلوب",
     businessTypes: {
@@ -350,6 +353,10 @@ const ar: Dictionary = {
       rateLimited: "محاولات كثيرة من هذا الاتصال. يُرجى الانتظار بضع دقائق ثم المحاولة مجددًا.",
       network: "تعذّر الوصول إلى الخادم. تحقق من اتصالك وحاول مرة أخرى.",
       sendAnother: "إرسال طلب آخر",
+      whatsappTitle: "خطوة أخيرة: اضغط إرسال في واتساب",
+      whatsappBody: "فُتح واتساب وطلبك مكتوب مسبقًا. اضغط إرسال هناك ليصل إلى فريقنا. لن يصلنا شيء قبل ذلك.",
+      whatsappAgain: "افتح واتساب مرة أخرى",
+      whatsappEdit: "تعديل طلبي",
     },
   },
   notFound: {

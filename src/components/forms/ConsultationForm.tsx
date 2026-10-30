@@ -19,7 +19,7 @@ import {
 } from "@/lib/validation";
 
 type FormDict = Dictionary["form"];
-type Status = "idle" | "sending" | "success" | "notConfigured" | "failed" | "rateLimited" | "network";
+type Status = "idle" | "sending" | "success" | "whatsapp" | "notConfigured" | "failed" | "rateLimited" | "network";
 
 const FIELD_ORDER: (keyof EnquiryInput)[] = [
   "fullName",
@@ -51,12 +51,15 @@ export function ConsultationForm({
   serviceOptions,
   packageOptions,
   privacyHref,
+  whatsappNumber,
 }: {
   locale: Locale;
   t: FormDict;
   serviceOptions: { value: string; label: string; group: string }[];
   packageOptions: { value: string; label: string }[];
   privacyHref: string;
+  /** When set, a valid enquiry is handed to WhatsApp on this number instead of the server. */
+  whatsappNumber?: string;
 }) {
   const uid = useId();
   const id = (f: string) => `${uid}-${f}`;
@@ -87,7 +90,7 @@ export function ConsultationForm({
   const allowed = [...serviceOptions.map((o) => o.value), GENERAL_SERVICE, FREE_VISIT];
 
   useEffect(() => {
-    if (status === "success") successRef.current?.focus();
+    if (status === "success" || status === "whatsapp") successRef.current?.focus();
   }, [status]);
 
   const set = <K extends keyof typeof empty>(key: K, value: (typeof empty)[K]) => {
@@ -119,6 +122,14 @@ export function ConsultationForm({
       return;
     }
     setErrors({});
+    if (whatsappNumber) {
+      const url = whatsappUrl(result.data);
+      // Opened inside the submit handler so browsers treat it as a user action.
+      const win = window.open(url, "_blank");
+      if (!win) window.location.assign(url);
+      setStatus("whatsapp");
+      return;
+    }
     setStatus("sending");
     const honeypot = (formRef.current?.elements.namedItem("website") as HTMLInputElement | null)?.value ?? "";
     try {
@@ -145,6 +156,55 @@ export function ConsultationForm({
       setStatus("network");
     }
     requestAnimationFrame(() => summaryRef.current?.focus());
+  }
+
+  function whatsappUrl(data: EnquiryInput) {
+    const serviceLabel =
+      data.service === FREE_VISIT
+        ? t.freeVisit
+        : data.service === GENERAL_SERVICE
+          ? t.otherService
+          : (serviceOptions.find((o) => o.value === data.service)?.label ?? data.service);
+    const lines = [
+      `*${t.whatsappHeading}*`,
+      "",
+      `${t.fullName}: ${data.fullName}`,
+      `${t.businessName}: ${data.businessName}`,
+      `${t.email}: ${data.email}`,
+      `${t.phone}: ${data.phone}`,
+      `${t.businessType}: ${t.businessTypes[data.businessType as keyof typeof t.businessTypes] ?? data.businessType}`,
+      `${t.service}: ${serviceLabel}`,
+      `${t.contactMethod}: ${t.contactMethods[data.contactMethod as keyof typeof t.contactMethods] ?? data.contactMethod}`,
+      "",
+      `${t.requirements}:`,
+      data.requirements,
+    ];
+    return `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(lines.join("\n"))}`;
+  }
+
+  if (status === "whatsapp") {
+    const result = validateEnquiry(normalise(values), allowed);
+    return (
+      <div className="rounded-sm border border-teal/30 bg-white p-8 sm:p-10" role="status">
+        <svg viewBox="0 0 24 24" className="size-10 text-[#1fa855]" aria-hidden="true">
+          <path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.4.1-.6.3-.2.2-.8.8-.8 2s.8 2.3.9 2.5c.1.2 1.6 2.5 4 3.5 1.5.6 2.1.7 2.8.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.2-.3-.2-.5-.3Z" />
+        </svg>
+        <h2 ref={successRef} tabIndex={-1} className="mt-5 text-[length:var(--text-display-sm)] outline-none">
+          {t.status.whatsappTitle}
+        </h2>
+        <p className="mt-3 max-w-prose text-stone">{t.status.whatsappBody}</p>
+        <div className="mt-6 flex flex-wrap items-center gap-5">
+          {result.ok && (
+            <a href={whatsappUrl(result.data)} target="_blank" rel="noopener noreferrer" className={cn(buttonBase, "bg-[#1fa855] text-white hover:bg-[#178a45]")}>
+              {t.status.whatsappAgain}
+            </a>
+          )}
+          <button type="button" onClick={() => setStatus("idle")} className="font-semibold text-teal-dark underline underline-offset-4">
+            {t.status.whatsappEdit}
+          </button>
+        </div>
+      </div>
+    );
   }
 
   if (status === "success") {
@@ -380,8 +440,9 @@ export function ConsultationForm({
             <path d="M21 12a9 9 0 0 0-9-9" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
           </svg>
         )}
-        {status === "sending" ? t.sending : t.submit}
+        {status === "sending" ? t.sending : whatsappNumber ? t.submitWhatsapp : t.submit}
       </button>
+      {whatsappNumber && <p className="-mt-3 text-sm text-stone">{t.whatsappNote}</p>}
     </form>
   );
 }

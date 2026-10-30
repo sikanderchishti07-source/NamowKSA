@@ -8,6 +8,7 @@ import { pageMetadata } from "@/lib/seo";
 import { ButtonLink, Container } from "@/components/ui/primitives";
 import { Breadcrumbs, ContactChannels } from "@/components/sections/sections";
 import { ConsultationForm } from "@/components/forms/ConsultationForm";
+import { deliveryChannels } from "@/lib/server/delivery";
 
 export async function generateMetadata({ params }: PageProps<"/[locale]/contact">): Promise<Metadata> {
   const locale = await resolveLocale(params);
@@ -20,6 +21,8 @@ export default async function ContactPage({ params }: PageProps<"/[locale]/conta
   const d = getDictionary(locale);
   const booking = siteConfig.contact.bookingUrl;
   const location = siteConfig.contact.location[locale];
+  // Until email or a CRM webhook is configured, the form hands the enquiry to WhatsApp instead.
+  const whatsappOnly = deliveryChannels().length === 0 ? siteConfig.contact.whatsapp : undefined;
 
   const serviceOptions = [
     ...servicesBy("consultancy").map((s) => ({ value: s.slug, label: s.title[locale], group: d.nav.consultancy })),
@@ -58,7 +61,7 @@ export default async function ContactPage({ params }: PageProps<"/[locale]/conta
           <div className="rounded-sm border border-line bg-white p-6 sm:p-10">
             <h2 className="text-[length:var(--text-display-sm)]">{d.form.legend}</h2>
             <p className="mb-8 mt-2 text-sm text-stone">{d.form.allRequired}</p>
-            <ConsultationForm locale={locale} t={d.form} serviceOptions={serviceOptions} packageOptions={activePackages.map((p) => ({ value: p.id, label: p.name[locale] }))} privacyHref={`/${locale}/privacy`} />
+            <ConsultationForm locale={locale} t={d.form} serviceOptions={serviceOptions} packageOptions={activePackages.map((p) => ({ value: p.id, label: p.name[locale] }))} privacyHref={`/${locale}/privacy`} whatsappNumber={whatsappOnly} />
           </div>
         </div>
       </Container>

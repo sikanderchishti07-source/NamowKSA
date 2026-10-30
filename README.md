@@ -53,6 +53,8 @@ The site is designed for **Vercel** (zero config), but any host that runs `next 
 
 The visitor sees the success message **only when every configured channel accepts the enquiry**. With no channel configured the API returns `503` and the form tells the visitor to use the direct contact details; it never pretends a message was sent.
 
+**WhatsApp hand-off (current setup).** While no email or webhook channel is configured, the contact form does not call the API. A valid enquiry opens WhatsApp to the business number (`NEXT_PUBLIC_WHATSAPP_NUMBER`, default `966503361798`) with the details pre-written, and the form tells the visitor to press Send there. As soon as Resend or a CRM webhook is configured and the site is redeployed, the form switches back to server delivery automatically.
+
 The rate limiter is in-memory (per server instance). For stricter limits on serverless, replace `src/lib/server/rate-limit.ts` with a shared store such as Upstash Redis; the function signature stays the same.
 
 ---
