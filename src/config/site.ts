@@ -17,7 +17,7 @@ function digitsOnly(value: string | undefined): string | undefined {
 export const siteConfig = {
   name: "NamowKSA",
   /** Full public URL, no trailing slash. Used for canonical URLs, sitemap and Open Graph. */
-  url: (clean(process.env.NEXT_PUBLIC_SITE_URL) ?? "http://localhost:3000").replace(/\/$/, ""),
+  url: (clean(process.env.NEXT_PUBLIC_SITE_URL) ?? "https://namowksa.com").replace(/\/$/, ""),
   contact: {
     email: clean(process.env.NEXT_PUBLIC_CONTACT_EMAIL),
     /** Display format, e.g. "+966 5X XXX XXXX". */
