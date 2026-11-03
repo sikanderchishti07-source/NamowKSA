@@ -79,7 +79,7 @@ const en = {
     heroBody:
       "Practical restaurant consultancy and digital solutions that bring structure to operations, clarity to costs, and confidence to your next stage of growth.",
     heroTrust: [
-      { value: "11", label: "Specialist services" },
+      { value: "14", label: "Specialist services" },
       { value: "AR | EN", label: "Fully bilingual" },
       { value: "KSA", label: "Market focus" },
     ],
@@ -141,7 +141,7 @@ const en = {
     ],
     servicesLabel: "Our services",
     servicesTitle: "Everything your restaurant needs to run well",
-    servicesBody: "Seven consultancy services and four digital solutions, each with a defined scope and clear deliverables. Select a service to see what it covers.",
+    servicesBody: "Ten consultancy services and four digital solutions, each with a defined scope and clear deliverables. Select a service to see what it covers.",
     operationsTitle: "Consultancy for operations and profitability",
     operationsBody:
       "Each engagement is scoped to the problem you have. Start with one area or combine several.",

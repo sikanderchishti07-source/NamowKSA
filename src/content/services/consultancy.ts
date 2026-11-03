@@ -276,6 +276,273 @@ export const consultancyServices: Service[] = [
     },
   },
   {
+    slug: "business-planning-budgeting",
+    category: "consultancy",
+    enabled: true,
+    image: "financePlanning",
+    title: { en: "Business Plans and Budget Cycle", ar: "خطط العمل ودورة الميزانية" },
+    short: {
+      en: "Business plans built on real restaurant numbers, and a yearly budget you can manage against month by month.",
+      ar: "خطط عمل مبنية على أرقام مطعمك الحقيقية، وميزانية سنوية تتابعها وتديرها شهرًا بشهر.",
+    },
+    headline: {
+      en: "A plan you can run the business on, not just present",
+      ar: "خطة تُدير بها عملك، لا مجرد خطة للعرض",
+    },
+    intro: {
+      en: "Many restaurant plans are written once for a bank or an investor and never opened again. We build business plans and annual budgets from your actual sales, costs and capacity, then set up a simple budget cycle so you compare plan with reality every month and adjust early.",
+      ar: "كثير من خطط المطاعم تُكتب مرة واحدة لبنك أو مستثمر ثم لا تُفتح مجددًا. نبني خطط العمل والميزانيات السنوية من مبيعاتك وتكاليفك وطاقتك الفعلية، ثم نضع دورة ميزانية بسيطة تقارن فيها الخطة بالواقع كل شهر وتعدّل مبكرًا.",
+    },
+    problems: [
+      { en: "There is no written budget, so spending decisions are made case by case.", ar: "لا توجد ميزانية مكتوبة، فتُتخذ قرارات الإنفاق حالة بحالة." },
+      { en: "The business plan was prepared for financing and no longer reflects how the restaurant runs.", ar: "أُعدّت خطة العمل لغرض التمويل ولم تعد تعكس طريقة تشغيل المطعم." },
+      { en: "Sales targets are set without looking at seats, opening hours or delivery capacity.", ar: "تُحدَّد أهداف المبيعات دون النظر إلى المقاعد أو ساعات العمل أو طاقة التوصيل." },
+      { en: "Nobody reviews actual results against the plan until the year is over.", ar: "لا أحد يراجع النتائج الفعلية مقابل الخطة حتى نهاية السنة." },
+    ],
+    approach: [
+      {
+        title: { en: "Baseline and assumptions", ar: "خط الأساس والافتراضات" },
+        body: {
+          en: "We review your recent sales, costs and capacity, and agree clear, written assumptions for covers, average spend, seasonality and cost levels.",
+          ar: "نراجع مبيعاتك وتكاليفك وطاقتك في الفترة الأخيرة، ونتفق على افتراضات مكتوبة وواضحة لعدد الزبائن ومتوسط الإنفاق والموسمية ومستويات التكلفة.",
+        },
+      },
+      {
+        title: { en: "Business plan", ar: "خطة العمل" },
+        body: {
+          en: "For a new concept, a new branch or a funding request, we prepare a business plan covering the market, the concept, the operating model and the financial projections behind it.",
+          ar: "لمفهوم جديد أو فرع جديد أو طلب تمويل، نُعدّ خطة عمل تغطي السوق والمفهوم ونموذج التشغيل والتوقعات المالية التي تستند إليها.",
+        },
+      },
+      {
+        title: { en: "Annual budget", ar: "الميزانية السنوية" },
+        body: {
+          en: "We build a month-by-month budget for sales, food and beverage cost, payroll, rent, marketing and other operating costs, by branch where you have more than one.",
+          ar: "نبني ميزانية شهرية للمبيعات وتكلفة الطعام والمشروبات والرواتب والإيجار والتسويق وباقي التكاليف التشغيلية، ولكل فرع على حدة إن كان لديك أكثر من فرع.",
+        },
+      },
+      {
+        title: { en: "Budget cycle", ar: "دورة الميزانية" },
+        body: {
+          en: "We set up a monthly review of budget against actual, with a short variance commentary and a routine for reforecasting the rest of the year.",
+          ar: "نضع مراجعة شهرية للميزانية مقابل الفعلي، مع تعليق موجز على الفروقات، وروتين لإعادة التوقع لبقية السنة.",
+        },
+      },
+    ],
+    deliverables: [
+      { en: "Business plan with financial projections", ar: "خطة عمل مع توقعات مالية" },
+      { en: "Month-by-month annual budget (by branch where relevant)", ar: "ميزانية سنوية مقسمة شهريًا (لكل فرع عند الحاجة)" },
+      { en: "Documented planning assumptions", ar: "افتراضات تخطيط موثقة" },
+      { en: "Monthly budget-vs-actual template and review routine", ar: "نموذج شهري للميزانية مقابل الفعلي وروتين للمراجعة" },
+      { en: "Reforecast template for the rest of the year", ar: "نموذج لإعادة التوقع لبقية السنة" },
+    ],
+    benefits: [
+      { en: "Spending decisions made against a clear plan", ar: "قرارات إنفاق مبنية على خطة واضحة" },
+      { en: "Early warning when sales or costs move away from plan", ar: "تنبيه مبكر عند ابتعاد المبيعات أو التكاليف عن الخطة" },
+      { en: "A credible plan to share with partners, investors or lenders", ar: "خطة موثوقة تشاركها مع الشركاء أو المستثمرين أو جهات التمويل" },
+      { en: "Targets your managers understand and can act on", ar: "أهداف يفهمها مديروك ويستطيعون العمل عليها" },
+    ],
+    faqs: [
+      {
+        q: { en: "Can you prepare a business plan for a restaurant that hasn't opened yet?", ar: "هل يمكنكم إعداد خطة عمل لمطعم لم يُفتتح بعد؟" },
+        a: {
+          en: "Yes. For a new concept we base the projections on the location, the concept and comparable operating assumptions, and we document every assumption so it can be checked and updated.",
+          ar: "نعم. للمفاهيم الجديدة نبني التوقعات على الموقع والمفهوم وافتراضات تشغيلية مماثلة، ونوثّق كل افتراض ليمكن التحقق منه وتحديثه.",
+        },
+      },
+      {
+        q: { en: "How long does it take to build an annual budget?", ar: "كم يستغرق إعداد الميزانية السنوية؟" },
+        a: {
+          en: "It depends on the number of branches and how complete your records are. We agree a timeline after reviewing your data in the first meeting.",
+          ar: "يعتمد ذلك على عدد الفروع ومدى اكتمال سجلاتك. نتفق على الجدول الزمني بعد مراجعة بياناتك في الاجتماع الأول.",
+        },
+      },
+    ],
+    related: ["fb-accounting-reporting", "cashflow-expansion-planning", "food-costing"],
+    seoDescription: {
+      en: "Restaurant business plans and annual budgets in Saudi Arabia, with a monthly budget-vs-actual cycle and reforecasting.",
+      ar: "خطط عمل وميزانيات سنوية للمطاعم في السعودية، مع دورة شهرية لمقارنة الميزانية بالفعلي وإعادة التوقع.",
+    },
+  },
+  {
+    slug: "fb-accounting-reporting",
+    category: "consultancy",
+    enabled: true,
+    image: "financeReporting",
+    title: { en: "F&B Accounting and Reporting", ar: "المحاسبة والتقارير لقطاع الأغذية والمشروبات" },
+    short: {
+      en: "Management accounts built for restaurants, with a monthly P&L, the F&B ratios that matter and dashboards made for your business.",
+      ar: "حسابات إدارية مصممة للمطاعم: قائمة دخل شهرية، ونسب الأغذية والمشروبات المهمة، ولوحات متابعة مخصصة لعملك.",
+    },
+    headline: {
+      en: "Numbers that tell you how the restaurant is really doing",
+      ar: "أرقام تخبرك بحقيقة أداء مطعمك",
+    },
+    intro: {
+      en: "General accounting often lumps restaurant costs together, so owners can't see food cost, labour cost or the profit of each branch. We structure your management accounts the F&B way and give you monthly reports and dashboards you can actually use to make decisions.",
+      ar: "كثيرًا ما تجمع المحاسبة العامة تكاليف المطعم معًا، فلا يرى المالك تكلفة الطعام أو تكلفة العمالة أو ربح كل فرع. ننظّم حساباتك الإدارية بطريقة قطاع الأغذية والمشروبات، ونقدّم تقارير شهرية ولوحات متابعة تستخدمها فعلًا في اتخاذ القرارات.",
+    },
+    problems: [
+      { en: "The monthly accounts arrive late and don't show food cost or labour cost clearly.", ar: "تصل الحسابات الشهرية متأخرة ولا تُظهر تكلفة الطعام أو العمالة بوضوح." },
+      { en: "You can't see which branch, channel or category is making money.", ar: "لا تستطيع معرفة أي فرع أو قناة أو فئة تحقق الربح." },
+      { en: "POS, inventory and accounting figures don't match.", ar: "أرقام نقاط البيع والمخزون والمحاسبة لا تتطابق." },
+      { en: "Reports exist, but nobody reads them because they are hard to follow.", ar: "التقارير موجودة لكن لا أحد يقرؤها لصعوبة فهمها." },
+    ],
+    approach: [
+      {
+        title: { en: "Chart of accounts for F&B", ar: "دليل حسابات لقطاع الأغذية والمشروبات" },
+        body: {
+          en: "We restructure your chart of accounts so food, beverage, packaging, payroll, delivery commissions and occupancy costs are tracked separately, by branch.",
+          ar: "نعيد هيكلة دليل الحسابات بحيث تُتابَع تكاليف الطعام والمشروبات والتغليف والرواتب وعمولات التوصيل والإشغال بشكل منفصل ولكل فرع.",
+        },
+      },
+      {
+        title: { en: "Month-end routine", ar: "روتين إقفال الشهر" },
+        body: {
+          en: "We set up a month-end checklist that reconciles sales, stock counts and purchases, so the P&L reflects what actually happened.",
+          ar: "نضع قائمة إقفال شهرية تطابق المبيعات وجرد المخزون والمشتريات، لتعكس قائمة الدخل ما حدث فعلًا.",
+        },
+      },
+      {
+        title: { en: "F&B reporting pack", ar: "حزمة تقارير الأغذية والمشروبات" },
+        body: {
+          en: "A short monthly pack with the P&L by branch and the key ratios: food and beverage cost percentage, labour cost percentage, prime cost and sales per cover.",
+          ar: "حزمة شهرية موجزة تضم قائمة الدخل لكل فرع والنسب الرئيسية: نسبة تكلفة الطعام والمشروبات، ونسبة تكلفة العمالة، والتكلفة الأساسية، والمبيعات لكل زبون.",
+        },
+      },
+      {
+        title: { en: "Specific dashboards", ar: "لوحات متابعة مخصصة" },
+        body: {
+          en: "We design dashboards around the decisions you make each week, for owners, finance and branch managers, connected to your POS and accounting data where possible.",
+          ar: "نصمم لوحات متابعة حول القرارات التي تتخذها كل أسبوع، للملاك والإدارة المالية ومديري الفروع، وترتبط ببيانات نقاط البيع والمحاسبة حيثما أمكن.",
+        },
+      },
+    ],
+    deliverables: [
+      { en: "F&B chart of accounts and cost-centre structure", ar: "دليل حسابات وهيكل مراكز تكلفة لقطاع الأغذية والمشروبات" },
+      { en: "Month-end close checklist and reconciliation routine", ar: "قائمة إقفال شهري وروتين للمطابقة" },
+      { en: "Monthly reporting pack with P&L by branch", ar: "حزمة تقارير شهرية مع قائمة الدخل لكل فرع" },
+      { en: "Key ratio definitions (food, beverage, labour and prime cost)", ar: "تعريفات النسب الرئيسية (الطعام والمشروبات والعمالة والتكلفة الأساسية)" },
+      { en: "Owner and branch dashboards specific to your business", ar: "لوحات متابعة للمالك والفروع مخصصة لعملك" },
+    ],
+    benefits: [
+      { en: "A clear view of profit by branch and channel", ar: "رؤية واضحة للربح حسب الفرع والقناة" },
+      { en: "Faster, more reliable month-end figures", ar: "أرقام نهاية الشهر أسرع وأكثر موثوقية" },
+      { en: "Cost problems spotted while they are still small", ar: "اكتشاف مشكلات التكلفة وهي لا تزال صغيرة" },
+      { en: "One set of numbers that owners, finance and managers all trust", ar: "مجموعة أرقام واحدة يثق بها الملاك والإدارة المالية والمديرون" },
+    ],
+    faqs: [
+      {
+        q: { en: "Do you replace our accountant or auditor?", ar: "هل تحلّون محل المحاسب أو المراجع لدينا؟" },
+        a: {
+          en: "No. We focus on management accounting and reporting for decision-making. Statutory audit, zakat and tax filings stay with your licensed accountant or auditor, and we work alongside them.",
+          ar: "لا. نركّز على المحاسبة الإدارية والتقارير لدعم القرار. أما المراجعة النظامية وإقرارات الزكاة والضريبة فتبقى لدى المحاسب أو المراجع المرخص لديك، ونعمل بالتنسيق معه.",
+        },
+      },
+      {
+        q: { en: "Which systems can the dashboards connect to?", ar: "بأي أنظمة يمكن ربط لوحات المتابعة؟" },
+        a: {
+          en: "It depends on the POS, inventory and accounting systems you already use. We review what data they can export and build the dashboards around that.",
+          ar: "يعتمد ذلك على أنظمة نقاط البيع والمخزون والمحاسبة التي تستخدمها حاليًا. نراجع البيانات التي يمكن تصديرها منها ونبني اللوحات على أساسها.",
+        },
+      },
+    ],
+    related: ["dashboards-reporting", "business-planning-budgeting", "food-costing"],
+    seoDescription: {
+      en: "F&B management accounting and reporting for restaurants in Saudi Arabia: P&L by branch, food and labour cost ratios, and custom dashboards.",
+      ar: "محاسبة إدارية وتقارير للمطاعم في السعودية: قائمة دخل لكل فرع، ونسب تكلفة الطعام والعمالة، ولوحات متابعة مخصصة.",
+    },
+  },
+  {
+    slug: "cashflow-expansion-planning",
+    category: "consultancy",
+    enabled: true,
+    image: "financeExpansion",
+    title: { en: "Cashflow Management and Expansion Planning", ar: "إدارة التدفق النقدي وتخطيط التوسع" },
+    short: {
+      en: "Cashflow forecasting and control for day-to-day stability, and financial planning before you open your next branch.",
+      ar: "توقّع التدفق النقدي وضبطه لاستقرار التشغيل اليومي، وتخطيط مالي قبل افتتاح فرعك التالي.",
+    },
+    headline: {
+      en: "Keep cash under control, and grow when the numbers are ready",
+      ar: "تحكّم في نقدك، وتوسّع حين تكون الأرقام جاهزة",
+    },
+    intro: {
+      en: "A restaurant can be busy and profitable on paper yet still run short of cash. We help you forecast and manage cashflow week by week, and when you are considering a new branch, we test whether the business can fund it and what it needs to earn.",
+      ar: "قد يكون المطعم مزدحمًا ورابحًا على الورق ومع ذلك يعاني نقصًا في النقد. نساعدك على توقّع التدفق النقدي وإدارته أسبوعًا بأسبوع، وعندما تفكّر في فرع جديد نختبر قدرة العمل على تمويله وما يجب أن يحققه.",
+    },
+    problems: [
+      { en: "Cash runs tight before rent, salaries or supplier payments, even in good months.", ar: "يضيق النقد قبل الإيجار أو الرواتب أو دفعات الموردين حتى في الأشهر الجيدة." },
+      { en: "Delivery-app settlements and supplier terms aren't tracked in one place.", ar: "تسويات تطبيقات التوصيل وشروط الموردين غير متابعة في مكان واحد." },
+      { en: "A new branch is being planned without a clear view of the investment and payback.", ar: "يُخطَّط لفرع جديد دون رؤية واضحة للاستثمار وفترة الاسترداد." },
+      { en: "Expansion decisions are based on the busiest branch, not the average one.", ar: "تُتخذ قرارات التوسع بناءً على الفرع الأكثر ازدحامًا لا على الفرع المتوسط." },
+    ],
+    approach: [
+      {
+        title: { en: "Cashflow forecast", ar: "توقّع التدفق النقدي" },
+        body: {
+          en: "We build a rolling 13-week cashflow forecast covering sales receipts, delivery-app settlements, payroll, rent, suppliers and loan payments.",
+          ar: "نبني توقعًا متجددًا للتدفق النقدي لمدة 13 أسبوعًا يشمل متحصلات المبيعات وتسويات تطبيقات التوصيل والرواتب والإيجار والموردين وأقساط التمويل.",
+        },
+      },
+      {
+        title: { en: "Working capital controls", ar: "ضوابط رأس المال العامل" },
+        body: {
+          en: "We review stock levels, supplier terms and payment timing, and agree simple rules that free up cash without hurting operations.",
+          ar: "نراجع مستويات المخزون وشروط الموردين وتوقيت الدفعات، ونتفق على قواعد بسيطة تحرّر النقد دون الإضرار بالتشغيل.",
+        },
+      },
+      {
+        title: { en: "Expansion readiness", ar: "جاهزية التوسع" },
+        body: {
+          en: "Before a new branch, we check whether your current operation is stable and documented enough to repeat, and whether cash and financing can support it.",
+          ar: "قبل الفرع الجديد، نتحقق من أن تشغيلك الحالي مستقر وموثّق بما يكفي لتكراره، ومن قدرة النقد والتمويل على دعمه.",
+        },
+      },
+      {
+        title: { en: "Branch investment case", ar: "دراسة الاستثمار للفرع" },
+        body: {
+          en: "We model the capital cost, pre-opening costs, ramp-up period and break-even for the proposed site, with conservative and expected scenarios.",
+          ar: "نحسب تكلفة الإنشاء وتكاليف ما قبل الافتتاح وفترة النمو التدريجي ونقطة التعادل للموقع المقترح، مع سيناريو متحفظ وآخر متوقع.",
+        },
+      },
+    ],
+    deliverables: [
+      { en: "Rolling 13-week cashflow forecast template", ar: "نموذج توقّع متجدد للتدفق النقدي لمدة 13 أسبوعًا" },
+      { en: "Working capital review with recommended actions", ar: "مراجعة لرأس المال العامل مع إجراءات موصى بها" },
+      { en: "Expansion readiness assessment", ar: "تقييم جاهزية التوسع" },
+      { en: "New-branch investment and break-even model", ar: "نموذج استثمار ونقطة تعادل للفرع الجديد" },
+      { en: "Funding and phasing options for the expansion plan", ar: "خيارات التمويل والمراحل لخطة التوسع" },
+    ],
+    benefits: [
+      { en: "Fewer cash surprises before payroll and rent", ar: "مفاجآت نقدية أقل قبل الرواتب والإيجار" },
+      { en: "Cash released from stock and payment timing", ar: "تحرير نقد من المخزون وتوقيت الدفعات" },
+      { en: "Expansion decisions based on tested numbers", ar: "قرارات توسع مبنية على أرقام مختبرة" },
+      { en: "A clear case to present to partners or lenders", ar: "دراسة واضحة تعرضها على الشركاء أو جهات التمويل" },
+    ],
+    faqs: [
+      {
+        q: { en: "Do you arrange financing?", ar: "هل ترتّبون التمويل؟" },
+        a: {
+          en: "We don't provide or broker financing. We prepare the cashflow forecast and investment case that banks, partners and investors usually ask for.",
+          ar: "لا نقدّم التمويل ولا نتوسط فيه. نُعدّ توقعات التدفق النقدي ودراسة الاستثمار التي تطلبها عادةً البنوك والشركاء والمستثمرون.",
+        },
+      },
+      {
+        q: { en: "How is this different from Restaurant Launch and Expansion?", ar: "ما الفرق بين هذه الخدمة وخدمة افتتاح المطاعم والتوسع؟" },
+        a: {
+          en: "This service focuses on the money: cashflow and whether an expansion makes financial sense. Launch and Expansion covers delivering the opening itself, from planning to the first weeks of trading.",
+          ar: "تركّز هذه الخدمة على الجانب المالي: التدفق النقدي ومدى جدوى التوسع ماليًا. أما خدمة الافتتاح والتوسع فتغطي تنفيذ الافتتاح نفسه من التخطيط حتى الأسابيع الأولى من التشغيل.",
+        },
+      },
+    ],
+    related: ["launch-expansion", "business-planning-budgeting", "fb-accounting-reporting"],
+    seoDescription: {
+      en: "Restaurant cashflow management and expansion planning in Saudi Arabia: 13-week cash forecasts, working capital and new-branch investment cases.",
+      ar: "إدارة التدفق النقدي وتخطيط التوسع للمطاعم في السعودية: توقعات نقدية لـ13 أسبوعًا، ورأس المال العامل، ودراسات استثمار الفروع الجديدة.",
+    },
+  },
+  {
     slug: "inventory-waste-control",
     category: "consultancy",
     enabled: true,
@@ -625,7 +892,7 @@ export const consultancyServices: Service[] = [
         },
       },
     ],
-    related: ["staffing-training", "menu-engineering", "restaurant-websites"],
+    related: ["cashflow-expansion-planning", "staffing-training", "restaurant-websites"],
     seoDescription: {
       en: "Restaurant opening and expansion consulting in Saudi Arabia: readiness planning, pre-opening training and multi-branch playbooks.",
       ar: "استشارات افتتاح المطاعم والتوسع في السعودية: تخطيط الجاهزية، والتدريب قبل الافتتاح، وأدلة الفروع المتعددة.",

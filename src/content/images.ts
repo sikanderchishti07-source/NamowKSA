@@ -103,6 +103,19 @@ export const images = {
     src: u("photo-1542372147193-a7aca54189cd"),
     alt: { en: "A latte and croissant on a café table", ar: "قهوة لاتيه وكرواسون على طاولة مقهى" },
   },
+  /** Service photos for the finance services, generated with Higgsfield (GPT Image 2.5). */
+  financePlanning: {
+    src: "/images/services/business-planning-budgeting-photo.jpg",
+    alt: { en: "A budget planner, printed charts and a laptop on a restaurant office desk", ar: "مخطط ميزانية ورسوم بيانية مطبوعة وحاسوب محمول على مكتب إدارة مطعم" },
+  },
+  financeReporting: {
+    src: "/images/services/fb-accounting-reporting-photo.jpg",
+    alt: { en: "Financial dashboards on screens beside invoices in a restaurant back office", ar: "لوحات متابعة مالية على الشاشات بجانب الفواتير في المكتب الخلفي لمطعم" },
+  },
+  financeExpansion: {
+    src: "/images/services/cashflow-expansion-planning-photo.jpg",
+    alt: { en: "A cashflow chart on a tablet beside floor plans for a new restaurant branch", ar: "مخطط تدفق نقدي على جهاز لوحي بجانب مخططات فرع مطعم جديد" },
+  },
 } satisfies Record<string, ImageAsset>;
 
 export type ImageKey = keyof typeof images;

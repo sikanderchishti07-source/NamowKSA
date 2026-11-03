@@ -265,7 +265,7 @@ export const digitalServices: Service[] = [
         },
       },
     ],
-    related: ["food-costing", "workflow-automation", "restaurant-operations"],
+    related: ["fb-accounting-reporting", "food-costing", "workflow-automation"],
     seoDescription: {
       en: "Restaurant performance dashboards and operational reporting in Saudi Arabia: sales, food cost, labour and branch comparisons in one view.",
       ar: "لوحات أداء المطاعم والتقارير التشغيلية في السعودية: المبيعات وتكلفة الطعام والعمالة والمقارنة بين الفروع في عرض واحد.",

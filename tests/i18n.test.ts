@@ -76,8 +76,8 @@ describe("bilingual content", () => {
 describe("content integrity", () => {
   const slugs = new Set(allServices.map((s) => s.slug));
 
-  it("has 7 consultancy and 4 digital services with unique slugs", () => {
-    expect(allServices.filter((s) => s.category === "consultancy")).toHaveLength(7);
+  it("has 10 consultancy and 4 digital services with unique slugs", () => {
+    expect(allServices.filter((s) => s.category === "consultancy")).toHaveLength(10);
     expect(allServices.filter((s) => s.category === "digital")).toHaveLength(4);
     expect(slugs.size).toBe(allServices.length);
   });
