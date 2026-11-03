@@ -21,6 +21,8 @@ export const metadata: Metadata = {
   applicationName: "NamowKSA",
   icons: { icon: "/icon.png", apple: "/apple-icon.png" },
   formatDetection: { telephone: false, address: false, email: false },
+  // The site has its own Arabic and English versions, so browsers should not offer machine translation.
+  other: { google: "notranslate" },
 };
 
 export const viewport: Viewport = {
@@ -35,7 +37,7 @@ export default async function LocaleLayout({ children, params }: LayoutProps<"/[
   const d = getDictionary(locale);
 
   return (
-    <html lang={locale} dir={dirOf(locale)} className={fontVariables}>
+    <html lang={locale} dir={dirOf(locale)} translate="no" className={fontVariables}>
       <body className="min-h-dvh">
         <Preloader />
         <a
