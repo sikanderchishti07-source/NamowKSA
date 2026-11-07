@@ -108,8 +108,8 @@ export const consultancyServices: Service[] = [
       ar: "تحليل القائمة، وتوحيد الوصفات، وهيكلة القائمة بما يوجّه الضيوف نحو أفضل أطباقك.",
     },
     headline: {
-      en: "A menu that sells well and cooks the same every time",
-      ar: "قائمة تبيع جيدًا وتُطهى بالمستوى نفسه في كل مرة",
+      en: "A menu built for higher sales and a taste that never changes",
+      ar: "قائمة طعام تضمن أعلى المبيعات وثباتًا لا يتغيّر في الطعم",
     },
     intro: {
       en: "We analyse what each dish sells and earns, standardise the recipes behind it, and help you shape a menu that is easier to cook, easier to cost and easier for guests to choose from.",
